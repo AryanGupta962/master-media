@@ -1,19 +1,17 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-import Header from "@/src/components/Header";
-import Footer from "@/src/components/Footer";
+import Header from "@/src/components/layout/Header";
+import Footer from "@/src/components/layout/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
 
 export const metadata: Metadata = {
   title: {
@@ -32,22 +30,21 @@ export const metadata: Metadata = {
   authors: [{ name: "Master Media" }],
   creator: "Master Media",
   metadataBase: new URL("https://mastermedia.in"),
+  manifest: "/manifest.json",
+  themeColor: "#9e00fe",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`
-          ${geistSans.variable}
-          ${geistMono.variable}
+          ${montserrat.variable}
           antialiased
-          bg-white
-          text-neutral-900
         `}
       >
         <Header />

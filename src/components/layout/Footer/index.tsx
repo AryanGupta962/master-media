@@ -11,7 +11,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="relative bg-yellow-400 text-black">
+    <footer className="relative bg-purple text-black">
       <div className="mx-auto max-w-7xl px-6 py-20">
         {/* Top Grid */}
         <div className="grid gap-14 lg:grid-cols-[1.2fr_1fr_1fr_auto]">

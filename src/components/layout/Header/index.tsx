@@ -1,15 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import {
   FaInfoCircle,
   FaServicestack,
   FaBriefcase,
-  FaTrophy,
-  FaUsers,
-  FaUserTie,
   FaRocket,
   FaEnvelope,
   FaBars,
@@ -23,12 +21,9 @@ type NavItem = {
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "About Us", href: "/about", icon: <FaInfoCircle /> },
+  { label: "Home", href: "/", icon: <FaInfoCircle /> },
   { label: "Services", href: "/services", icon: <FaServicestack /> },
   { label: "Our Work", href: "/work", icon: <FaBriefcase /> },
-  { label: "Awards", href: "/awards", icon: <FaTrophy /> },
-  { label: "Clients", href: "/clients", icon: <FaUsers /> },
-  { label: "Our Team", href: "/team", icon: <FaUserTie /> },
   { label: "Careers", href: "/careers", icon: <FaRocket /> },
   { label: "Contact Us", href: "/contact", icon: <FaEnvelope /> },
 ];
@@ -46,21 +41,22 @@ export default function Header() {
 
   return (
     <>
-      {/* Header */}
       <header
         className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-lg shadow-sm"
-            : "bg-white"
+          scrolled ? "bg-white/80 backdrop-blur-lg shadow-sm" : "bg-white"
         }`}
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
-          {/* Logo */}
-          <Link href="/" className="text-xl font-bold tracking-tight">
-            Master<span className="text-yellow-500">Media</span>
+          <Link href="/" className="relative w-30 h-16">
+            <Image
+              src="/icons/master-media-logo.webp"
+              alt="Master Media Logo"
+              fill
+              className="object-cover"
+              priority
+            />
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {NAV_ITEMS.map((item) => {
               const active = pathname === item.href;
@@ -85,7 +81,6 @@ export default function Header() {
 
                   <span>{item.label}</span>
 
-                  {/* underline */}
                   <span
                     className={`absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-yellow-400 transition-transform duration-300 ${
                       active ? "scale-x-100" : "group-hover:scale-x-100"
@@ -96,17 +91,12 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setOpen(true)}
-            className="lg:hidden text-2xl"
-          >
+          <button onClick={() => setOpen(true)} className="lg:hidden text-2xl">
             <FaBars />
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu */}
       <div
         className={`fixed inset-0 z-50 bg-black/40 transition-opacity ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
@@ -147,7 +137,6 @@ export default function Header() {
         </nav>
       </aside>
 
-      {/* Spacer for fixed header */}
       <div className="h-16" />
     </>
   );
