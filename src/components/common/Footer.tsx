@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import {
   FaInstagram,
@@ -9,7 +7,7 @@ import {
   FaArrowUp,
 } from "react-icons/fa6";
 
-export default function Footer() {
+export default async function Footer() {
   return (
     <footer className="relative bg-blue-200 text-black">
       <div className="mx-auto max-w-7xl px-6 py-20">
@@ -23,12 +21,12 @@ export default function Footer() {
             </div>
 
             <p className="text-sm leading-relaxed text-black/80">
-              That means you scrolled, explored, and didn’t rage-quit.
+              That means you scrolled, explored, and didn&apos;t rage-quit.
               <br />
-              As a reward, we’re mentally adding <strong>
+              As a reward, we&apos;re mentally adding <strong>
                 10,000 steps
               </strong>{" "}
-              to your fitness tracker. You’re welcome 😌
+              to your fitness tracker. You&apos;re welcome 😌
             </p>
           </div>
 
@@ -106,7 +104,7 @@ export default function Footer() {
           that people remember. We mix strategy, creativity, tech, and just the
           right amount of madness to help businesses grow online.
           <br />
-          If you’re reading this, congratulations — you clearly care about
+          If you&apos;re reading this, congratulations — you clearly care about
           details. We like you already.
         </p>
 
@@ -117,7 +115,7 @@ export default function Footer() {
           </span>
 
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            // onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center gap-2 rounded-full border border-black px-4 py-2 font-medium hover:bg-black hover:text-yellow-400 transition"
           >
             Back to top <FaArrowUp />

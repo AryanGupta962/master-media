@@ -1,5 +1,18 @@
-export default function Services() {
+import ServicesGrid from "@/src/components/services/ServicesGrid";
+import ServicesHero from "@/src/components/services/ServicesHero";
+
+export default async function ServicesPage() {
   return (
-    <div>Services</div>
-  )
+    <section className="flex-1 relative bg-white text-yellow-400 py-24 px-6">
+      <ServicesHero />
+      <ServicesGrid />
+
+      <div className="mt-24 text-center text-gray-400">
+        <p className="text-sm">
+          Social Media • Performance Marketing • Influencer Marketing • Branding
+          • Web Development
+        </p>
+      </div>
+    </section>
+  );
 }

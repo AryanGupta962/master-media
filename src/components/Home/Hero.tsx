@@ -1,55 +1,93 @@
-// import React from "react";
+// "use client";
 // import Image from "next/image";
+// import { useState } from "react";
 
 export default function Hero() {
+  // const [activeBg, setActiveBg] = useState("");
+
   return (
-    <section className="relative w-full min-h-screen bg-primary-purple flex items-center justify-center overflow-hidden">
-  
-      {/* <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden md:block">
-        <Image
-          src="/icons/gun.svg"
-          alt="Creative Icon"
-          width={128}
-          height={128}
-          className="drop-shadow-lg"
-        />
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-10 bg-white transition-all duration-500">
+        {/* <Image src={""} alt="Hero BG" fill priority className="object-cover" /> */}
       </div>
 
-      <div className="absolute right-10 bottom-20 hidden md:block">
-        <Image
-          src="/icons/cup.svg"
-          alt="Chai Icon"
-          width={128}
-          height={128}
-          className="drop-shadow-lg"
-        />
-      </div> */}
+      {/* Overlay (optional for readability) */}
+      <div className="absolute inset-0 -z-10" />
 
-      {/* Main Content */}
-      <div className="text-center px-6 max-w-4xl">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-black mb-6">
-          We Are <span className="text-black">Marketing Mafias</span>
+      {/* Content */}
+      <div className="text-center px-6 max-w-5xl">
+        <h1 className="text-5xl md:text-7xl font-extrabold text-black mb-8">
+          We Are{" "}
+          <span
+            // onMouseEnter={() => setActiveBg("")}
+            // onMouseLeave={() => setActiveBg("yellow")}
+            className="cursor-pointer underline decoration-4 underline-offset-8"
+          >
+            Masters
+          </span>
         </h1>
-        <p className="text-xl md:text-4xl font-medium text-black mb-4">
-          Skilled enough to know <span className="font-bold text-5xl">better</span>
+
+        <p className="text-2xl md:text-4xl text-black mb-4">
+          of Social media. Experienced enough to know the{" "}
+          <span
+            // onMouseEnter={() => setActiveBg("")}
+            // onMouseLeave={() => setActiveBg("default")}
+            className="font-extrabold cursor-pointer underline"
+          >
+            algorithm
+          </span>
         </p>
-        <p className="text-xl md:text-4xl text-black font-medium mb-8">
-          Wild enough to think <span className="font-bold text-5xl">bigger!</span>
+
+        <p className="text-2xl md:text-4xl text-black mb-10">
+          creative enough to{" "}
+          <span
+            // onMouseEnter={() => setActiveBg("blue")}
+            // onMouseLeave={() => setActiveBg("default")}
+            className="font-extrabold cursor-pointer underline"
+          >
+            break
+          </span>{" "}
+          it!
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="px-8 py-3 bg-black text-yellow-400 rounded-2xl text-lg font-semibold shadow-md hover:scale-105 transition">
+
+        <div className="flex gap-4 justify-center">
+          <button
+            className="
+        px-10 py-4 
+        bg-amber-100 
+        rounded-xl 
+        text-lg 
+        font-bold 
+        cursor-pointer
+        transition-all 
+        duration-300 
+        ease-out
+        hover:-translate-y-1 
+        hover:scale-105 
+        hover:shadow-xl
+        active:scale-95
+      "
+          >
             Get Started
           </button>
-          <button className="px-8 py-3 border-2 border-black text-black rounded-2xl text-lg font-semibold hover:bg-black hover:text-yellow-400 transition">
+
+          <button
+            className="px-10 py-4 border-2  border-black rounded-xl text-lg font-semibold cursor-pointer transition-all 
+        duration-300 
+        ease-out
+        hover:bg-black 
+        hover:text-white
+        hover:-translate-y-1 
+        hover:scale-105
+        hover:shadow-xl
+        active:scale-95
+      "
+          >
             View Work
           </button>
         </div>
       </div>
-
-      {/* Decorative Scribbles */}
-      {/* <div className="absolute left-1/2 top-1/ hidden lg:block">
-        <div className="w-30 h-30 border-2 border-white rounded-full opacity-50"></div>
-      </div> */}
     </section>
   );
 }

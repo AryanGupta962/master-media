@@ -50,7 +50,7 @@ export default function Header() {
         >
           <div className="flex h-18 items-center justify-between bg-white rounded-2xl border border-black/5 px-6 shadow-sm backdrop-blur-lg">
             {/* LOGO */}
-            <Link href="/" className="relative h-full w-54">
+            <Link href="/" className="relative h-full w-24">
               <Image
                 src="/mm-logo-trans.png"
                 alt="Master Media"
@@ -124,7 +124,7 @@ export default function Header() {
 
       {/* MOBILE DRAWER */}
       <aside
-        className={`fixed right-0 top-0 z-50 h-full w-[280px] bg-white p-6 shadow-xl transition-transform duration-300 ${
+        className={`fixed right-0 top-0 z-50 h-full w-70 bg-white p-6 shadow-xl transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -162,9 +162,6 @@ export default function Header() {
           </Link>
         </nav>
       </aside>
-
-      {/* SPACER */}
-     
     </>
   );
 }

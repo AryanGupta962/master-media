@@ -1,17 +1,14 @@
+import Header from "@/src/components/common/Header";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-
-import Header from "@/src/components/layout/Header";
-import Footer from "@/src/components/layout/Footer";
+import Footer from "@/src/components/common/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-montserrat",
 });
-
-
 
 export const metadata: Metadata = {
   title: {
@@ -31,16 +28,16 @@ export const metadata: Metadata = {
   creator: "Master Media",
   metadataBase: new URL("https://mastermedia.in"),
   manifest: "/manifest.json",
-  themeColor: "#9e00fe",
+  // themeColor: "#9e00fe",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
         className={`
           ${montserrat.variable}
@@ -48,7 +45,7 @@ export default function RootLayout({
         `}
       >
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen flex">{children}</main>
         <Footer />
       </body>
     </html>
