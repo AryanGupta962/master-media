@@ -1,6 +1,6 @@
 "use client";
+import { services } from "@/src/utils/constants/services.data";
 import ServiceCard from "./ServiceCard";
-import { services } from "../../utils/constants/services.data";
 
 export default function ServicesGrid() {
   return (
