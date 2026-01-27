@@ -55,13 +55,13 @@ export default function Header() {
   return (
     <>
       {/* HEADER */}
-      <header className="fixed top-0 z-50 w-full">
+      <header className="fixed top-0 z-50 w-full font-sans">
         <div
-          className={`mx-auto max-w-7xl px-4 transition-all duration-500 ease-out
-          ${scrollDir === "up" ? "mt-2 scale-[1.01]" : "mt-4 scale-100"}`}
+          className={`mx-auto max-w-[1600px] px-4 transition-all duration-500 ease-out
+          ${scrollDir === "up" ? "mt-4 scale-[1.01]" : "mt-6 scale-100"}`}
         >
           <div
-            className={`flex h-18 items-center justify-between rounded-2xl border px-6 backdrop-blur-lg
+            className={`flex h-20 items-center justify-between rounded-2xl px-6 backdrop-blur-lg
             transition-all duration-500 ease-out
             ${
               scrollDir === "up"
@@ -70,7 +70,7 @@ export default function Header() {
             }`}
           >
             {/* LOGO */}
-            <Link href="/" className="relative h-full w-24">
+            <Link href="/" className="relative h-full w-32">
               <Image
                 src="/mm-logo-trans.png"
                 alt="Master Media"
@@ -81,7 +81,7 @@ export default function Header() {
             </Link>
 
             {/* DESKTOP NAV */}
-            <nav className="hidden lg:flex items-center gap-7">
+            <nav className="hidden lg:flex items-center gap-10">
               {NAV_ITEMS.map((item) => {
                 const active = pathname === item.href;
 
@@ -89,11 +89,11 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group relative flex items-center gap-2 text-sm font-medium transition
+                    className={`group relative flex items-center gap-2 text-xl font-semibold transition
                     ${active ? "text-black" : "text-gray-600 hover:text-black"}`}
                   >
                     <span
-                      className={`text-base transition-transform ${
+                      className={`text-lg transition-transform ${
                         active ? "scale-110" : "group-hover:scale-110"
                       }`}
                     >
@@ -115,7 +115,7 @@ export default function Header() {
             <Link
               href="/contact"
               className="hidden lg:inline-flex items-center rounded-xl bg-primary px-5 py-2.5
-              text-sm font-semibold text-white transition hover:bg-primary/90 hover:shadow-lg"
+              text-lg font-semibold text-white transition hover:bg-primary/90 hover:shadow-lg"
             >
               Get In Touch
             </Link>

@@ -1,89 +1,102 @@
-// "use client";
-// import Image from "next/image";
-// import { useState } from "react";
+"use client";
+
+import { useState } from "react";
+
+type ActiveWord = "masters" | "algorithm" | "break" | null;
 
 export default function Hero() {
-  // const [activeBg, setActiveBg] = useState("");
+  const [activeWord, setActiveWord] = useState<ActiveWord>(null);
+
+  const getBgColor = () => {
+    switch (activeWord) {
+      case "masters":
+        return "bg-yellow-400";
+      case "algorithm":
+        return "bg-emerald-500";
+      case "break":
+        return "bg-primary-light";
+      default:
+        return "bg-white";
+    }
+  };
+
+  const dim = (word: ActiveWord) =>
+    activeWord !== null && activeWord !== word ? "opacity-0" : "opacity-100";
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 -z-10 bg-white transition-all duration-500">
-        {/* <Image src={""} alt="Hero BG" fill priority className="object-cover" /> */}
-      </div>
+    <section
+      className={`relative min-h-screen flex items-center justify-center transition-colors duration-300 ${getBgColor()}`}
+    >
+      <div className="text-center px-6 max-w-5xl text-black">
+        {/* Line 1 */}
+        <h1 className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
+          <span className={`transition-opacity duration-200 ${dim("masters")}`}>
+            We Are{" "}
+          </span>
 
-      {/* Overlay (optional for readability) */}
-      <div className="absolute inset-0 -z-10" />
-
-      {/* Content */}
-      <div className="text-center px-6 max-w-5xl">
-        <h1 className="text-5xl md:text-7xl font-extrabold text-black mb-8">
-          We Are{" "}
           <span
-            // onMouseEnter={() => setActiveBg("")}
-            // onMouseLeave={() => setActiveBg("yellow")}
-            className="cursor-pointer underline decoration-4 underline-offset-8"
+            onMouseEnter={() => setActiveWord("masters")}
+            onMouseLeave={() => setActiveWord(null)}
+            className={`cursor-pointer underline decoration-4 underline-offset-8 transition-opacity duration-200 ${dim(
+              "masters"
+            )}`}
           >
             Masters
           </span>
         </h1>
 
-        <p className="text-2xl md:text-4xl text-black mb-4">
-          of Social media. Experienced enough to know the{" "}
+        {/* Line 2 */}
+        <p className="text-2xl md:text-4xl mb-4">
           <span
-            // onMouseEnter={() => setActiveBg("")}
-            // onMouseLeave={() => setActiveBg("default")}
-            className="font-extrabold cursor-pointer underline"
+            className={`transition-opacity duration-200 ${dim("algorithm")}`}
+          >
+            of Social media. Experienced enough to know the{" "}
+          </span>
+
+          <span
+            onMouseEnter={() => setActiveWord("algorithm")}
+            onMouseLeave={() => setActiveWord(null)}
+            className={`font-extrabold cursor-pointer underline transition-opacity duration-200 ${dim(
+              "algorithm"
+            )}`}
           >
             algorithm
           </span>
         </p>
 
-        <p className="text-2xl md:text-4xl text-black mb-10">
-          creative enough to{" "}
+        {/* Line 3 */}
+        <p className="text-2xl md:text-4xl mb-10">
+          <span className={`transition-opacity duration-200 ${dim("break")}`}>
+            creative enough to{" "}
+          </span>
+
           <span
-            // onMouseEnter={() => setActiveBg("blue")}
-            // onMouseLeave={() => setActiveBg("default")}
-            className="font-extrabold cursor-pointer underline"
+            onMouseEnter={() => setActiveWord("break")}
+            onMouseLeave={() => setActiveWord(null)}
+            className={`font-extrabold cursor-pointer underline transition-opacity duration-200 ${dim(
+              "break"
+            )}`}
           >
             break
-          </span>{" "}
-          it!
+          </span>
+
+          <span className={`transition-opacity duration-200 ${dim("break")}`}>
+            {" "}
+            it!
+          </span>
         </p>
 
-        <div className="flex gap-4 justify-center">
-          <button
-            className="
-        px-10 py-4 
-        bg-amber-100 
-        rounded-xl 
-        text-lg 
-        font-bold 
-        cursor-pointer
-        transition-all 
-        duration-300 
-        ease-out
-        hover:-translate-y-1 
-        hover:scale-105 
-        hover:shadow-xl
-        active:scale-95
-      "
-          >
+        {/* Buttons */}
+        <div
+          className={`flex gap-4 justify-center transition-opacity duration-200 ${
+            activeWord ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          <button className="px-10 py-4 bg-yellow-300 border-2 border-black rounded-xl text-[22px] font-bold hover:-translate-y-1 hover:shadow-xl transition-all">
             Get Started
           </button>
 
-          <button
-            className="px-10 py-4 border-2  border-black rounded-xl text-lg font-semibold cursor-pointer transition-all 
-        duration-300 
-        ease-out
-        hover:bg-black 
-        hover:text-white
-        hover:-translate-y-1 
-        hover:scale-105
-        hover:shadow-xl
-        active:scale-95
-      "
-          >
+          <button className="px-10 py-4 bg-black text-white border-2 border-black rounded-xl text-[22px] font-semibold hover:-translate-y-1 hover:shadow-xl transition-all">
             View Work
           </button>
         </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   FaInstagram,
@@ -7,118 +9,135 @@ import {
   FaArrowUp,
 } from "react-icons/fa6";
 
-export default async function Footer() {
+export default function Footer() {
   return (
-    <footer className="relative bg-blue-200 text-black">
-      <div className="mx-auto max-w-7xl px-6 py-20">
-        {/* Top Grid */}
-        <div className="grid gap-14 lg:grid-cols-[1.2fr_1fr_1fr_auto]">
-          {/* Fun Section */}
-          <div className="max-w-md">
-            <div className="mb-6 text-2xl font-bold leading-snug">
-              🎉 Congrats! <br />
+    <footer className="relative bg-primary-dark text-white font-sans">
+      <div className="mx-auto max-w-[1600px] px-6 pt-10 pb-5">
+        {/* TOP GRID */}
+        <div className="flex gap-5 justify-between">
+          {/* FUN / INTRO */}
+          <div className="">
+            <h3 className="mb-4 text-2xl font-bold leading-snug">
+              Congrats! <br />
               You actually reached the footer.
+            </h3>
+
+            <div className="flex flex-col gap-5">
+              <p className="text-base leading-relaxed text-white/75">
+                That means you scrolled, explored, and didn&apos;t rage-quit.
+                <br />
+                We&apos;re mentally adding{" "}
+                <strong className="text-white">10,000 steps</strong> to your
+                fitness tracker. You&apos;re welcome 😌
+              </p>
+
+              {/* DESCRIPTION */}
+              <p className="py-4 md:py-0 max-w-4xl text-base leading-relaxed text-white/70">
+                Master Media is a digital & creative agency building brands
+                people remember. We mix strategy, creativity, tech, and just the
+                right amount of madness to help businesses grow online.
+                <br />
+                <span className="mt-2 pb-4 inline-block text-white/80">
+                  If you&apos;re reading this, congratulations — you clearly
+                  care about details. We like you already.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-16 ">
+            {/* LINKS – COLUMN 1 */}
+            <div>
+              <p className="mb-4 text-lg uppercase tracking-wider font-bold text-gray-300">
+                Company
+              </p>
+              <div className="flex flex-col gap-3 text-base font-medium">
+                {["About Us", "Services", "Our Work", "Careers"].map((item) => (
+                  <Link
+                    key={item}
+                    href={`/${item.toLowerCase().replace(/\s/g, "-")}`}
+                    className="group w-fit"
+                  >
+                    <span className="relative">
+                      {item}
+                      <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-white transition-all group-hover:w-full" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
 
-            <p className="text-sm leading-relaxed text-black/80">
-              That means you scrolled, explored, and didn&apos;t rage-quit.
-              <br />
-              As a reward, we&apos;re mentally adding <strong>
-                10,000 steps
-              </strong>{" "}
-              to your fitness tracker. You&apos;re welcome 😌
-            </p>
-          </div>
+            {/* LINKS – COLUMN 2 */}
+            <div>
+              <p className="mb-4 text-lg uppercase tracking-wider font-bold text-gray-300">
+                Resources
+              </p>
+              <div className="flex flex-col gap-3 text-base font-medium">
+                {["Awards", "Contact Us", "Privacy Policy"].map((item) => (
+                  <Link
+                    key={item}
+                    href={`/${item.toLowerCase().replace(/\s/g, "-")}`}
+                    className="group w-fit"
+                  >
+                    <span className="relative">
+                      {item}
+                      <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-white transition-all group-hover:w-full" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-          {/* Links Column 1 */}
-          <div className="space-y-4  space-x-4 text-sm font-medium">
-            <Link href="/about" className="hover:underline">
-              About Us
-            </Link>
-            <Link href="/services" className="hover:underline">
-              Services
-            </Link>
-            <Link href="/work" className="hover:underline">
-              Our Work
-            </Link>
-            <Link href="/clients" className="hover:underline">
-              Clients
-            </Link>
-            <Link href="/team" className="hover:underline">
-              Our Team
-            </Link>
-          </div>
-
-          {/* Links Column 2 */}
-          <div className="space-y-4 text-sm font-medium space-x-4">
-            <Link href="/awards" className="hover:underline">
-              Awards
-            </Link>
-            <Link href="/careers" className="hover:underline">
-              Careers
-            </Link>
-            <Link href="/contact" className="hover:underline">
-              Contact Us
-            </Link>
-            <Link href="/privacy-policy" className="hover:underline">
-              Privacy Policy
-            </Link>
-          </div>
-
-          {/* Social Icons */}
-          <div className="flex flex-col gap-5 text-xl">
-            <a
-              aria-label="Instagram"
-              href="#"
-              className="hover:scale-110 transition"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              aria-label="Twitter"
-              href="#"
-              className="hover:scale-110 transition"
-            >
-              <FaXTwitter />
-            </a>
-            <a
-              aria-label="Facebook"
-              href="#"
-              className="hover:scale-110 transition"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              aria-label="LinkedIn"
-              href="#"
-              className="hover:scale-110 transition"
-            >
-              <FaLinkedinIn />
-            </a>
+            {/* SOCIALS */}
+            <div>
+              <p className="mb-4 text-lg uppercase tracking-wider font-bold text-gray-300">
+                Follow Us
+              </p>
+              <div className="flex gap-4 lg:flex-col items-center">
+                {[
+                  {
+                    icon: <FaInstagram className="h-7 w-7" />,
+                    label: "Instagram",
+                  },
+                  {
+                    icon: <FaXTwitter className="h-6 w-6" />,
+                    label: "Twitter",
+                  },
+                  {
+                    icon: <FaFacebookF className="h-6 w-6" />,
+                    label: "Facebook",
+                  },
+                  {
+                    icon: <FaLinkedinIn className="h-6 w-6" />,
+                    label: "LinkedIn",
+                  },
+                ].map((item) => (
+                  <Link
+                    key={item.label}
+                    aria-label={item.label}
+                    href={"/"}
+                    className="flex h-10 w-10 lg:h-12 lg:w-12 shadow-lg shadow-slate-500 items-center justify-center rounded-full text-black bg-white border border-white/30 transition-all hover:border-white hover:bg-white/50 hover:text-primary-dark"
+                  >
+                    {item.icon}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Description */}
-        <p className="mt-14 max-w-5xl text-sm leading-relaxed text-black/80">
-          Master Media is a full-stack digital & creative agency building brands
-          that people remember. We mix strategy, creativity, tech, and just the
-          right amount of madness to help businesses grow online.
-          <br />
-          If you&apos;re reading this, congratulations — you clearly care about
-          details. We like you already.
-        </p>
-
-        {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-6 border-t border-black/20 pt-6 text-xs md:flex-row">
-          <span>
+        {/* BOTTOM BAR */}
+        <div className="mt-6 flex flex-col items-center justify-between gap-6 border-t border-white/15 pt-4 text-base sm:flex-row">
+          <span className="text-white/60">
             © {new Date().getFullYear()} Master Media. Built with ☕ & ideas.
           </span>
 
           <button
-            // onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-2 rounded-full border border-black px-4 py-2 font-medium hover:bg-black hover:text-yellow-400 transition"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group flex items-center gap-2 rounded-full border border-white/40 px-4.5 py-2 font-medium transition hover:bg-white hover:text-primary-dark"
           >
-            Back to top <FaArrowUp />
+            Back to top
+            <FaArrowUp className="transition-transform group-hover:-translate-y-0.7" />
           </button>
         </div>
       </div>
