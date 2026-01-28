@@ -148,7 +148,7 @@ const ServiceCard3D = ({
         transformStyle: "preserve-3d",
         perspective: 1000,
       }}
-      className="relative cursor-pointer"
+      className="relative cursor-pointer rounded-3xl border-2 border-gray-600/10"
     >
       {/* Glow effect */}
       <motion.div

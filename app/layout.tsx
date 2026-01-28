@@ -52,7 +52,7 @@ export default function RootLayout({
         `}
       >
         <Header />
-        <main className="min-h-screen flex">{children}</main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

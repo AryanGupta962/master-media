@@ -57,7 +57,7 @@ export default function Header() {
       {/* HEADER */}
       <header className="fixed top-0 z-50 w-full font-sans">
         <div
-          className={`mx-auto max-w-[1600px] px-4 transition-all duration-500 ease-out
+          className={`mx-auto max-w-400 px-4 transition-all duration-500 ease-out
           ${scrollDir === "up" ? "mt-4 scale-[1.01]" : "mt-6 scale-100"}`}
         >
           <div
@@ -89,7 +89,7 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group relative flex items-center gap-2 text-xl font-semibold transition
+                    className={`group relative flex items-center gap-2 text-base font-semibold transition
                     ${active ? "text-black" : "text-gray-600 hover:text-black"}`}
                   >
                     <span

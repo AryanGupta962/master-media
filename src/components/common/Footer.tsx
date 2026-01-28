@@ -14,9 +14,9 @@ export default function Footer() {
     <footer className="relative bg-primary-dark text-white font-sans">
       <div className="mx-auto max-w-[1600px] px-6 pt-10 pb-5">
         {/* TOP GRID */}
-        <div className="flex gap-5 justify-between">
-          {/* FUN / INTRO */}
-          <div className="">
+        <div className="flex flex-col gap-12 lg:flex-row lg:gap-5 lg:justify-between">
+          {/* INTRO */}
+          <div className="max-w-xl text-center lg:text-left">
             <h3 className="mb-4 text-2xl font-bold leading-snug">
               Congrats! <br />
               You actually reached the footer.
@@ -31,13 +31,12 @@ export default function Footer() {
                 fitness tracker. You&apos;re welcome 😌
               </p>
 
-              {/* DESCRIPTION */}
-              <p className="py-4 md:py-0 max-w-4xl text-base leading-relaxed text-white/70">
+              <p className="max-w-xl text-base leading-relaxed text-white/70">
                 Master Media is a digital & creative agency building brands
                 people remember. We mix strategy, creativity, tech, and just the
                 right amount of madness to help businesses grow online.
                 <br />
-                <span className="mt-2 pb-4 inline-block text-white/80">
+                <span className="mt-2 inline-block text-white/80">
                   If you&apos;re reading this, congratulations — you clearly
                   care about details. We like you already.
                 </span>
@@ -45,13 +44,14 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-16 ">
-            {/* LINKS – COLUMN 1 */}
+          {/* LINKS GRID */}
+          <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-2 lg:grid-cols-3 lg:gap-16 lg:text-left">
+            {/* COMPANY */}
             <div>
               <p className="mb-4 text-lg uppercase tracking-wider font-bold text-gray-300">
                 Company
               </p>
-              <div className="flex flex-col gap-3 text-base font-medium">
+              <div className="flex flex-col gap-3 text-base font-medium items-center lg:items-start">
                 {["About Us", "Services", "Our Work", "Careers"].map((item) => (
                   <Link
                     key={item}
@@ -67,12 +67,12 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* LINKS – COLUMN 2 */}
+            {/* RESOURCES */}
             <div>
               <p className="mb-4 text-lg uppercase tracking-wider font-bold text-gray-300">
                 Resources
               </p>
-              <div className="flex flex-col gap-3 text-base font-medium">
+              <div className="flex flex-col gap-3 text-base font-medium items-center lg:items-start">
                 {["Awards", "Contact Us", "Privacy Policy"].map((item) => (
                   <Link
                     key={item}
@@ -93,7 +93,8 @@ export default function Footer() {
               <p className="mb-4 text-lg uppercase tracking-wider font-bold text-gray-300">
                 Follow Us
               </p>
-              <div className="flex gap-4 lg:flex-col items-center">
+
+              <div className="flex justify-center gap-4 lg:flex-col lg:items-start">
                 {[
                   {
                     icon: <FaInstagram className="h-7 w-7" />,
@@ -115,8 +116,8 @@ export default function Footer() {
                   <Link
                     key={item.label}
                     aria-label={item.label}
-                    href={"/"}
-                    className="flex h-10 w-10 lg:h-12 lg:w-12 shadow-lg shadow-slate-500 items-center justify-center rounded-full text-black bg-white border border-white/30 transition-all hover:border-white hover:bg-white/50 hover:text-primary-dark"
+                    href="/"
+                    className="flex h-11 w-11 lg:h-12 lg:w-12 items-center justify-center rounded-full bg-white text-black shadow-lg transition hover:bg-white/70 hover:text-primary-dark"
                   >
                     {item.icon}
                   </Link>
@@ -127,17 +128,17 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="mt-6 flex flex-col items-center justify-between gap-6 border-t border-white/15 pt-4 text-base sm:flex-row">
+        <div className="mt-8 flex flex-col gap-5 border-t border-white/15 pt-4 text-center sm:flex-row sm:items-center sm:justify-between">
           <span className="text-white/60">
             © {new Date().getFullYear()} Master Media. Built with ☕ & ideas.
           </span>
 
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="group flex items-center gap-2 rounded-full border border-white/40 px-4.5 py-2 font-medium transition hover:bg-white hover:text-primary-dark"
+            className="group mx-auto sm:mx-0 flex items-center gap-2 rounded-full border border-white/40 px-5 py-2 font-medium transition hover:bg-white hover:text-primary-dark"
           >
             Back to top
-            <FaArrowUp className="transition-transform group-hover:-translate-y-0.7" />
+            <FaArrowUp className="transition-transform group-hover:-translate-y-1" />
           </button>
         </div>
       </div>
