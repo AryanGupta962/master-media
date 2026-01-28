@@ -16,7 +16,7 @@ export default function Hero() {
       case "break":
         return "bg-primary-light";
       default:
-        return "bg-white";
+        return "";
     }
   };
 
@@ -26,8 +26,18 @@ export default function Hero() {
   return (
     <section
       className={`relative min-h-screen overflow-hidden flex items-center justify-center transition-colors duration-300  ${getBgColor()}`}
-    >
-      <div className="px-6 max-w-400 text-black">
+    ><video
+        className="absolute inset-0 -z-10 w-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/videos/hero-2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute inset-0 -z-10  bg-white/50" />
+      <div className="px-6 max-w-800 text-black">
         <div className="text-center">
           {/* Line 1 */}
           <h1 className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">

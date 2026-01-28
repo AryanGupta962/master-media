@@ -48,3 +48,33 @@ body {
 
 
 
+/* swipper */
+/* Custom styles for VideoGallery component */
+
+.video-swiper {
+  overflow: visible !important;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.video-swiper .swiper-slide {
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-swiper .swiper-slide-active {
+  filter: brightness(1);
+}
+
+.video-swiper .swiper-slide:not(.swiper-slide-active) {
+  filter: brightness(0.7);
+}
+
+/* Optional: Add subtle shadow to active slide */
+.video-swiper .swiper-slide-active > div {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Ensure smooth transitions */
+.video-swiper .swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
