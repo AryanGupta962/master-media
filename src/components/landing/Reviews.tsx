@@ -94,7 +94,7 @@ export default function Reviews() {
             >
               {reviews.map((item, i) => (
                 <SwiperSlide key={i}>
-                  <div className="py-4">
+                  <div className="my-8 bg-transparent">
                     <ReviewCard {...item} />
                   </div>
                 </SwiperSlide>
@@ -139,7 +139,7 @@ function ReviewCard({
       className="group relative mx-auto max-w-3xl"
     >
       {/* Glow */}
-      <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-[#324dd3]/30 to-[#566bd6]/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-[#324dd3]/30 to-[#566bd6]/30 blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
 
       {/* Card */}
       <div className="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 md:p-10 shadow-xl">

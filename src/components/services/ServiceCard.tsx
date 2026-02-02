@@ -1,15 +1,22 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { IconType } from "react-icons";
+import { Variants } from "framer-motion";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 32 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.06, duration: 0.4 },
+    transition: {
+      delay: i * 0.08,
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
   }),
 };
+
 
 type Props = {
   title: string;
@@ -31,22 +38,82 @@ export default function ServiceCard({
       whileInView="visible"
       viewport={{ once: true }}
       custom={index}
-      whileHover={{ y: -10, scale: 1.02 }}
-      className="group relative bg-zinc-900 rounded-2xl p-8 border border-zinc-800 hover:border-green-400 transition-all"
+      whileHover={{
+        y: -12,
+        scale: 1.03,
+      }}
+      transition={{ type: "spring", stiffness: 220, damping: 18 }}
+      className="
+        group relative overflow-hidden
+        bg-black/5
+        rounded-2xl p-8
+        border border-gray-200
+        shadow-sm
+        hover:shadow-[0_20px_50px_rgba(50,77,211,0.15)]
+        transition-all
+      "
     >
-      <div className="flex items-center justify-between mb-6">
-        <div className="text-green-400 text-3xl">
-          <Icon />
-        </div>
-      </div>
+      {/* 🔵 Gradient Glow */}
+      <div
+        className="
+          absolute inset-0
+          opacity-0 group-hover:opacity-100
+          transition-opacity duration-500
+          pointer-events-none
+          bg-gradient-to-br
+          from-[var(--color-primary-light)]/20
+          via-transparent
+          to-transparent
+        "
+      />
 
-      <h3 className="text-xl font-semibold mb-3 group-hover:text-green-400 transition">
+      {/* Icon */}
+      <motion.div
+        whileHover={{ rotate: 6, scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="
+          w-12 h-12 mb-6
+          rounded-xl
+          flex items-center justify-center
+          bg-[var(--color-primary)]/10
+          text-[var(--color-primary)]
+          text-2xl
+        "
+      >
+        <Icon />
+      </motion.div>
+
+      {/* Title */}
+      <h3
+        className="
+          text-xl font-semibold mb-3
+          text-[var(--background)]
+          group-hover:text-[var(--color-primary)]
+          transition-colors
+        "
+      >
         {title}
       </h3>
 
-      <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+      {/* Description */}
+      <p
+        className="
+          text-[var(--color-gray)]
+          text-lg leading-relaxed
+        "
+      >
+        {desc}
+      </p>
 
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition pointer-events-none bg-linear-to-br from-green-400/10 to-transparent" />
+      {/* Bottom Accent Line */}
+      <div
+        className="
+          absolute bottom-0 left-0 h-[3px] w-0
+          bg-[var(--color-primary)]
+          group-hover:w-full
+          transition-all duration-500
+        "
+      />
     </motion.div>
   );
 }

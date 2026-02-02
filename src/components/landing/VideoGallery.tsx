@@ -1,10 +1,9 @@
 "use client";
-import { useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCoverflow } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
+import { Pagination, Autoplay, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
-
+import "swiper/css/pagination";
 
 interface VideoItem {
   id: number;
@@ -12,42 +11,70 @@ interface VideoItem {
   title: string;
 }
 
-const videos: VideoItem[] = [
-  { id: 1, src: "/videos/video.mp4", title: "Global Cultural Exchange" },
-  { id: 2, src: "/videos/video.mp4", title: "Impactful Community Events" },
-  { id: 3, src: "/videos/video.mp4", title: "Celebrating Diversity" },
-  { id: 4, src: "/videos/video.mp4", title: "Global Cultural Exchange" },
-  { id: 5, src: "/videos/video.mp4", title: "Impactful Community Events" },
-  { id: 6, src: "/videos/video.mp4", title: "Celebrating Diversity" },
-];
+const VideoGallery: React.FC = () => {
+  const [zoomIndex, setZoomIndex] = useState<number | null>(null);
+  const videoRefs = useRef<HTMLVideoElement[]>([]);
 
-export default function VideoGallery() {
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const swiperRef = useRef<SwiperType | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const videos: VideoItem[] = [
+    { id: 1, src: "/videos/video.mp4", title: "Global Cultural Exchange" },
+    { id: 2, src: "/videos/video.mp4", title: "Impactful Community Events" },
+    { id: 3, src: "/videos/video.mp4", title: "Celebrating Diversity" },
+    { id: 4, src: "/videos/video.mp4", title: "Global Cultural Exchange" },
+    { id: 5, src: "/videos/video.mp4", title: "Impactful Community Events" },
+    { id: 6, src: "/videos/video.mp4", title: "Celebrating Diversity" },
+  ];
 
-  const handleMouseEnter = (index: number) => {
-    swiperRef.current?.autoplay.stop();
-    const video = videoRefs.current[index];
-    if (video) {
-      video.muted = false;
-      video.play();
+  // Lock background scroll when modal is open
+  useEffect(() => {
+    if (zoomIndex !== null) {
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = "hidden";
+
+      return () => {
+        document.body.style.overflow = originalStyle;
+      };
     }
-  };
-
-  const handleMouseLeave = (index: number) => {
-    swiperRef.current?.autoplay.start();
-    const video = videoRefs.current[index];
-    if (video) {
-      video.pause();
-      video.muted = true;
-      video.currentTime = 0;
+    if (zoomIndex === null) {
+      document.querySelectorAll("video").forEach((v) => {
+        v.pause();
+        v.currentTime = 0;
+      });
     }
-  };
+  }, [zoomIndex]);
 
-  const handleSlideChange = (swiper: SwiperType) => {
-    setActiveIndex(swiper.realIndex);
-  };
+  // ESC to close modal
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setZoomIndex(null);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
+  function playActiveVideo(activeIndex: number) {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+
+      if (i - 1 === activeIndex) {
+        video.play();
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  }
+
+  // Pause all videos when modal opens
+  useEffect(() => {
+    if (zoomIndex !== null) {
+      videoRefs.current.forEach((v) => {
+        if (v) {
+          v.pause();
+          v.currentTime = 0;
+        }
+      });
+    }
+  }, [zoomIndex]);
 
   return (
     <section className="relative py-20 bg-background">
@@ -60,115 +87,126 @@ export default function VideoGallery() {
         </p>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-4 md:px-10">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-10">
+        {/* Main Swiper */}
         <Swiper
-          modules={[Autoplay, EffectCoverflow]}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
-          onSlideChange={handleSlideChange}
+          modules={[Pagination, Autoplay, EffectCoverflow]}
           effect="coverflow"
-          grabCursor={true}
-          loop={true}
-          centeredSlides={true}
-          slidesPerView="auto"
           coverflowEffect={{
-            rotate: 0,
+            rotate: 10,
             stretch: 0,
-            depth: 100,
+            depth: 150,
             modifier: 2,
             slideShadows: false,
           }}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
+          spaceBetween={35}
+          slidesPerView={1}
           breakpoints={{
-            320: {
-              coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 1.5,
-              },
-            },
-            768: {
-              coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 2,
-              },
-            },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
           }}
-          className="video-swiper !py-8 overflow-hidden"
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3500, disableOnInteraction: false }}
+          className="px-4"
+          onSwiper={(swiper) => {
+            playActiveVideo(swiper.activeIndex);
+          }}
+          onSlideChange={(swiper) => {
+            playActiveVideo(swiper.activeIndex);
+          }}
         >
-          {videos.map((video, index) => {
-     
-            
-            return (
-              <SwiperSlide
-                key={video.id}
-                className="!w-[280px] md:!w-[380px] transition-all duration-700 overflow-hidden rounded-3xl"
+          {videos.map((item, index) => (
+            <SwiperSlide key={item.id}>
+              <div
+                className="relative overflow-hidden rounded-xl cursor-pointer group"
+                onMouseEnter={() => videoRefs.current[index]?.play()}
+                onMouseLeave={() => {
+                  const v = videoRefs.current[index];
+                  if (v) {
+                    v.pause();
+                    v.currentTime = 0;
+                  }
+                }}
+                onClick={() => setZoomIndex(index)}
               >
-                {({ isActive: slideIsActive }) => (
-                  <div
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={() => handleMouseLeave(index)}
-                    className={`group relative overflow-hidden rounded-3xl bg-black shadow-2xl transition-all duration-700 ${
-                      slideIsActive
-                        ? "scale-110 md:scale-125 z-10"
-                        : "scale-90 opacity-60"
-                    }`}
-                  >
-                    <video
-                      ref={(el) => {
-                        if (el) videoRefs.current[index] = el;
-                      }}
-                      src={video.src}
-                      muted
-                      loop
-                      playsInline
-                      className="h-[380px] md:h-[420px] w-full object-cover"
-                    />
-                    
-                    {/* Gradient overlay */}
-                    <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent group-hover:opacity-0 transition-opacity duration-500" />
-                    
-                    {/* Title */}
-                    <div className="absolute bottom-6 left-6 right-6 text-white group-hover:opacity-0 transition-opacity duration-500">
-                      <h3 className="text-lg font-medium drop-shadow-lg">
-                        {video.title}
-                      </h3>
-                    </div>
-                    
-                    {/* Playing indicator */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-white shadow-lg backdrop-blur-sm">
-                        Playing
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                <video
+                  ref={(el) => {
+                    if (el) videoRefs.current[index] = el;
+                  }}
+                  src={item.src}
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="h-[500px] w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
 
-        {/* Navigation dots */}
-        <div className="flex justify-center gap-2 mt-8">
-          {videos.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => swiperRef.current?.slideToLoop(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === activeIndex
-                  ? "w-8 bg-primary"
-                  : "w-2 bg-gray-300 hover:bg-gray-400"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+                {/* Gradient overlay */}
+                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent group-hover:opacity-0 transition-opacity duration-500" />
+
+                {/* Title */}
+                <div className="absolute bottom-6 left-6 right-6 text-white group-hover:opacity-0 transition-opacity duration-500">
+                  <h3 className="text-lg font-medium drop-shadow-lg">
+                    {item.title}
+                  </h3>
+                </div>
+
+                {/* Optional play icon overlay */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                  <div className="bg-black/50 rounded-full p-4 text-white text-xl">
+                    ▶
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
+
+      {/* Fullscreen Video Modal */}
+      {zoomIndex !== null && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <Swiper
+            modules={[Pagination]}
+            pagination={{ clickable: true }}
+            initialSlide={zoomIndex}
+            className="w-full h-full flex items-center justify-center"
+          >
+            {videos.map((item, index) => (
+              <SwiperSlide
+                key={item.id}
+                className="!flex !items-center !justify-center"
+              >
+                <video
+                  src={item.src}
+                  controls
+                  autoPlay={index === zoomIndex}
+                  className="w-auto max-w-[90vw] max-h-[85vh] rounded-lg object-contain"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <button
+            onClick={() => setZoomIndex(null)}
+            aria-label="Close video"
+            className="
+    absolute top-6 right-6 z-[100]
+    flex items-center justify-center
+    w-12 h-12
+    rounded-full
+    bg-black/60
+    text-white text-2xl
+    hover:bg-black/80
+    transition
+  "
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </section>
   );
-}
+};
+
+export default VideoGallery;
