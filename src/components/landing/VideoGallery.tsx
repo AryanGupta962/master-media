@@ -50,15 +50,25 @@ const VideoGallery: React.FC = () => {
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
-
   function playActiveVideo(activeIndex: number) {
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
 
-      if (i - 1 === activeIndex) {
-        video.play();
+      const shouldPlay = i === activeIndex;
+
+      if (shouldPlay) {
+        if (video.paused) {
+          video.muted = true;
+          video.playsInline = true;
+
+          video.play().catch(() => {
+            // ignore autoplay / interruption warnings
+          });
+        }
       } else {
-        video.pause();
+        if (!video.paused) {
+          video.pause();
+        }
         video.currentTime = 0;
       }
     });
@@ -175,7 +185,7 @@ const VideoGallery: React.FC = () => {
             {videos.map((item, index) => (
               <SwiperSlide
                 key={item.id}
-                className="!flex !items-center !justify-center"
+                className="flex! items-center! justify-center!"
               >
                 <video
                   src={item.src}
@@ -190,16 +200,16 @@ const VideoGallery: React.FC = () => {
           <button
             onClick={() => setZoomIndex(null)}
             aria-label="Close video"
-            className="
-    absolute top-6 right-6 z-[100]
-    flex items-center justify-center
-    w-12 h-12
-    rounded-full
-    bg-black/60
-    text-white text-2xl
-    hover:bg-black/80
-    transition
-  "
+                      className="
+              absolute top-6 right-6 z-100
+              flex items-center justify-center
+              w-12 h-12
+              rounded-full
+              bg-black/60
+              text-white text-2xl
+              hover:bg-black/80
+              transition
+            "
           >
             ✕
           </button>

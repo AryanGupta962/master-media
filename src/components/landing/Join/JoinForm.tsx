@@ -54,11 +54,10 @@ export default function JoinForm() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-semibold text-[var(--color-primary-dark)]">
+      <h2 className="text-2xl font-semibold text-primary-dark">
         Join and become a master!
       </h2>
 
-      {/* ✅ Success Message */}
       {success && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -88,7 +87,7 @@ export default function JoinForm() {
               className="
                 w-full rounded-xl px-4 py-3 text-black
                 border border-gray-300
-                focus:outline-none focus:border-[var(--color-primary)]
+                focus:outline-none focus:border-primary
                 transition
               "
             />
@@ -106,8 +105,7 @@ export default function JoinForm() {
             type="submit"
             disabled={isSubmitting}
             className="
-              flex-1 bg-[var(--color-primary)]
-              hover:bg-[var(--color-primary-dark)]
+              flex-1 bg-primary hover:bg-primary-dark)
               text-white py-3 rounded-xl
               font-semibold transition
             "
