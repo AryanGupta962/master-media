@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { JSX, useEffect, useState } from "react";
 import {
-  FaInfoCircle,
   FaBriefcase,
   FaRocket,
   FaEnvelope,
@@ -13,6 +12,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { FaServicestack } from "react-icons/fa6";
+import { BiHomeSmile } from "react-icons/bi";
 
 type NavItem = {
   label: string;
@@ -21,7 +21,7 @@ type NavItem = {
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Home", href: "/", icon: <FaInfoCircle /> },
+  { label: "Home", href: "/", icon: <BiHomeSmile /> },
   { label: "Services", href: "/services", icon: <FaServicestack /> },
   { label: "Our Work", href: "/our-works", icon: <FaBriefcase /> },
   { label: "Careers", href: "/careers", icon: <FaRocket /> },

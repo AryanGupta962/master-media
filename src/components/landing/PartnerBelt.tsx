@@ -45,7 +45,7 @@ const PartnerBelt = () => {
         <div
           className={`
             belt-track
-            ${direction === "left" ? "belt-left" : "belt-right"}
+            ${direction === "left" ? "belt-left" : "belt-left"}
           `}
         >
           {[...PARTNER_BELT, ...PARTNER_BELT].map((item, i) => (
