@@ -84,7 +84,7 @@ function StatCard({
   desc,
 }: StatItem) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { margin: "-80px" });
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -121,7 +121,7 @@ function StatCard({
         </div>
 
         {/* Number */}
-        <div className="mt-4 lg:mt-6 font-36 font-extrabold text-white/80">
+        <div className="mt-4 lg:mt-6 font-36 font-extrabold text-white">
           {count.toLocaleString()}
           {suffix}
         </div>
@@ -130,7 +130,7 @@ function StatCard({
         <p className="mt-3 font-semibold text-white">{title}</p>
 
         {/* Desc */}
-        <p className="mt-2 font-16 text-white/80">{desc}</p>
+        <p className="mt-2 font-16 text-white">{desc}</p>
       </div>
     </motion.div>
   );

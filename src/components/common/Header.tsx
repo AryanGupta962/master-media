@@ -113,7 +113,9 @@ export default function Header() {
 
             {/* CTA */}
             <Link
-              href="/contact"
+              href="https://wa.me/919026792973?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services."
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden lg:inline-flex items-center rounded-xl bg-primary px-5 py-2.5
               font-18 font-semibold text-white transition hover:bg-primary/90 hover:shadow-lg"
             >
@@ -171,7 +173,9 @@ export default function Header() {
 
           <div className="border-t border-primary-light/50 pt-4 flex justify-center w-full">
             <Link
-              href="/contact"
+              href="https://wa.me/919026792973?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services."
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="w-full shadow-blue-500 inline-flex justify-center rounded-xl bg-primary border border-gray-400
             px-4 py-3 font-16 font-semibold text-white hover:shadow-sm"

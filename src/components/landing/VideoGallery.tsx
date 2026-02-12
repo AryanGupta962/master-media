@@ -82,7 +82,7 @@ const VideoGallery: React.FC = () => {
   return (
     <section className="relative py-10 lg:py-20 bg-primary-dark">
       <div className="mb-14 text-center">
-        <h2 className="font-48 font-extrabold text-black ">
+        <h2 className="font-48 font-extrabold text-white ">
           Impact in Action: Gallery
         </h2>
         <p className="mt-2 font-20 text-white max-w-3xl mx-auto">

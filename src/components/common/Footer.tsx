@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   FaInstagram,
-  FaXTwitter,
   FaFacebookF,
   FaLinkedinIn,
   FaArrowUp,
@@ -24,22 +24,18 @@ export default function Footer() {
 
             <div className="flex flex-col gap-5">
               <p className="text-base leading-relaxed text-white/75">
-                That means you scrolled, explored, and didn&apos;t rage-quit.
-                <br />
-                We&apos;re mentally adding{" "}
-                <strong className="text-white">10,000 steps</strong> to your
-                fitness tracker. You&apos;re welcome 😌
+                Achievement Unlocked:{" "}
+                <strong className="text-white">Master of the Scroll</strong> 🏆
+                We&apos;ve credited{" "}
+                <strong className="text-white">500 Master Points</strong> to
+                your brand — time to level up.
               </p>
 
               <p className="max-w-xl text-base leading-relaxed text-white/70">
-                Master Media is a digital & creative agency building brands
-                people remember. We mix strategy, creativity, tech, and just the
-                right amount of madness to help businesses grow online.
-                <br />
-                <span className="mt-2 inline-block text-white/80">
-                  If you&apos;re reading this, congratulations — you clearly
-                  care about details. We like you already.
-                </span>
+                Master Media is an elite, Pan-India digital marketing agency
+                powered by squad of &quot;Dhurandhar&quot; specialists. We deliver
+                results-first, full-stack &quot;Damdaar&quot; creative solutions
+                for ambitious brands that refuse average growth.
               </p>
             </div>
           </div>
@@ -73,7 +69,7 @@ export default function Footer() {
                 Resources
               </p>
               <div className="flex flex-col gap-3 text-base font-medium items-center lg:items-start">
-                {["Awards", "Contact Us", "Privacy Policy"].map((item) => (
+                {["Contact Us", "Privacy Policy"].map((item) => (
                   <Link
                     key={item}
                     href={`/${item.toLowerCase().replace(/\s/g, "-")}`}
@@ -99,24 +95,30 @@ export default function Footer() {
                   {
                     icon: <FaInstagram className="h-7 w-7" />,
                     label: "Instagram",
+                    url: "https://www.instagram.com/master_mediaa_/",
                   },
                   {
-                    icon: <FaXTwitter className="h-6 w-6" />,
-                    label: "Twitter",
+                    icon: <FaWhatsapp className="h-6 w-6" />,
+                    label: "WhatsApp",
+                    url: "https://wa.me/919026792973?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services.",
                   },
                   {
                     icon: <FaFacebookF className="h-6 w-6" />,
                     label: "Facebook",
+                    url: "https://www.facebook.com/people/Master-Mediaa/61577942753375/",
                   },
                   {
                     icon: <FaLinkedinIn className="h-6 w-6" />,
                     label: "LinkedIn",
+                    url: "https://www.linkedin.com/company/mastermediaa/",
                   },
                 ].map((item) => (
                   <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
                     key={item.label}
                     aria-label={item.label}
-                    href="/"
+                    href={item.url || "/"}
                     className="flex h-11 w-11 lg:h-12 lg:w-12 items-center justify-center rounded-full bg-white text-black shadow-lg transition hover:bg-white/70 hover:text-primary-dark"
                   >
                     {item.icon}

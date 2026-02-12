@@ -73,7 +73,7 @@ export default function Reviews() {
         >
           What Our{" "}
           <span className="bg-linear-to-r from-[#324dd3] to-[#566bd6] bg-clip-text text-transparent">
-            Masters
+            Clients
           </span>{" "}
           Say
         </motion.h2>

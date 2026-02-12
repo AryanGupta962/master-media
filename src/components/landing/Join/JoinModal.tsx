@@ -42,7 +42,7 @@ export default function JoinModal({
               rounded-2xl
               p-6
               shadow-[0_20px_60px_rgba(0,0,0,0.25)]
-              w-[300px] sm:w-[500px] lg:w-[800px]
+              w-[330] sm:w-[500px] lg:w-[700px]
             "
             initial={{
               x: "100vw",      // pushed from right
@@ -65,7 +65,6 @@ export default function JoinModal({
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* ❌ Close */}
             <button
               onClick={onClose}
               className="

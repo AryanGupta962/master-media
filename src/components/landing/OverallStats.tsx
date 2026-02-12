@@ -1,15 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CgSmileMouthOpen } from "react-icons/cg";
+import Link from "next/link";
+import { useState } from "react";
+// import { CgSmileMouthOpen } from "react-icons/cg";
 import {
   FaArrowRight,
   FaUsers,
-  FaBolt,
-  FaTrophy,
+  // FaBolt,
+  // FaTrophy,
 } from "react-icons/fa";
+import JoinModal from "./Join/JoinModal";
 
 export default function OverallStats() {
+  const [open, setOpen] = useState(false);
+
   return (
     <section className="relative overflow-hidden bg-linear-to-br from-[#F8FAFF] via-[#F3F6FF] to-[#EEF2FF] py-10 lg:py-20 px-6">
       {/* Floating linear blobs */}
@@ -35,11 +40,12 @@ export default function OverallStats() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.7 }}
-          className="mt-6 font-18 text-gray-600 max-w-2xl mx-auto"
+          className="mt-6 font-24 text-gray-600 max-w-2xl mx-auto"
         >
           Aapke har ek sawal ka,
           <br />
-          Ek hi <span className="font-semibold text-blue-600">“Dhurandhar”</span>{" "}
+          Ek hi{" "}
+          <span className="font-semibold text-blue-600">“Dhurandhar”</span>{" "}
           jawab —{" "}
           <span className="font-semibold text-blue-600">Master Media</span>
         </motion.p>
@@ -52,21 +58,35 @@ export default function OverallStats() {
           className="mt-10 flex flex-col sm:flex-row gap-5 justify-center"
         >
           {/* Primary */}
-          <button className="group relative inline-flex items-center justify-center rounded-xl bg-[#324dd3] px-8 py-4 text-white font-semibold shadow-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]">
-            Request a Proposal
-            <FaArrowRight className="ml-3 transition-transform group-hover:translate-x-1"  size={20}/>
-            <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 blur-sm bg-linear-to-r from-blue-500/10 to-purple-500/10" />
-          </button>
+          <>
+            <button
+              onClick={() => setOpen(true)}
+              className="group relative inline-flex items-center justify-center rounded-xl bg-[#324dd3] px-8 py-4 text-white font-semibold shadow-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]"
+            >
+              Request a Proposal
+              <FaArrowRight
+                className="ml-3 transition-transform group-hover:translate-x-1"
+                size={20}
+              />
+              <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 blur-sm bg-linear-to-r from-blue-500/10 to-purple-500/10" />
+            </button>
+            <div className="relative z-999">
+              <JoinModal open={open} onClose={() => setOpen(false)} />
+            </div>
+          </>
 
           {/* Secondary */}
-          <button className="group inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-8 py-4 font-semibold text-gray-800 transition-all duration-300 hover:border-blue-400 hover:text-blue-600 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]">
-            <FaUsers className="mr-3 text-[#324dd3]"  size={20}/>
+          <Link
+            href="/careers"
+            className="group inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-8 py-4 font-semibold text-gray-800 transition-all duration-300 hover:border-blue-400 hover:text-blue-600 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]"
+          >
+            <FaUsers className="mr-3 text-[#324dd3]" size={20} />
             Join the Team
-          </button>
+          </Link>
         </motion.div>
 
         {/* Achievement Card */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
@@ -92,7 +112,7 @@ export default function OverallStats() {
               </p>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

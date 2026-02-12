@@ -1,18 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { IconType } from "react-icons";
-import { Variants } from "framer-motion";
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.08,
-      duration: 0.5,
-      ease: [0.25, 0.1, 0.25, 1],
+      delay: i * 0.06,
+      duration: 0.45,
+      ease: "easeOut",
     },
   }),
 };
@@ -32,77 +31,64 @@ export default function ServiceCard({ title, desc, icon: Icon, index }: Props) {
       whileInView="visible"
       viewport={{ once: true }}
       custom={index}
-      whileHover={{
-        y: -12,
-        scale: 1.03,
-      }}
-      transition={{ type: "spring", stiffness: 220, damping: 18 }}
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
       className="
         group relative overflow-hidden
-        bg-black/5
-        rounded-2xl p-8
-        border border-gray-200
-        shadow-sm cursor-pointer
-        hover:shadow-[0_20px_50px_rgba(50,77,211,0.15)]
-        transition-all
+        rounded-3xl p-7 sm:p-8
+        bg-white
+        border border-black/5
+        shadow-[0_10px_30px_rgba(0,0,0,0.04)]
+        hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+        transition-all duration-300
       "
     >
-      {/* 🔵 Gradient Glow */}
-      <div
+      {/* Left Accent Line */}
+      <span className="absolute left-0 top-0 h-full w-[4px] bg-primary rounded-l-3xl" />
+
+      {/* Right Gradient Curve */}
+      <span
         className="
-          absolute inset-0
+          absolute top-0 right-0 h-full w-24
           opacity-0 group-hover:opacity-100
           transition-opacity duration-500
-          pointer-events-none
-          bg-linear-to-br
-          from-light/20
-          via-transparent
+          bg-linear-to-l
+          from-primary/10
+          via-primary/5
           to-transparent
+          pointer-events-none
         "
       />
 
       {/* Icon */}
-      <motion.div
-        whileHover={{ rotate: 6, scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 300 }}
+      <div
         className="
           w-12 h-12 mb-6
-          rounded-xl
+          rounded-2xl
           flex items-center justify-center
           bg-primary/10
           text-primary
-          font-24
+          text-xl
         "
       >
         <Icon />
-      </motion.div>
+      </div>
 
       {/* Title */}
-      <h3
-        className="
-          text-xl font-semibold mb-3
-          text-background
-          group-hover:text-primary
-          transition-colors
-        "
-      >
+      <h3 className="text-lg sm:text-xl font-semibold text-black mb-3">
         {title}
       </h3>
 
       {/* Description */}
-      <p
-        className="
-          text-gray
-          text-lg leading-relaxed
-        "
-      >
+      <p className="text-sm sm:text-base text-black/60 leading-relaxed">
         {desc}
       </p>
 
-      {/* Bottom Accent Line */}
-      <div
+      {/* Bottom Line */}
+      <span
         className="
-          absolute bottom-0 left-0 h-[3px] w-0
+          absolute bottom-0 left-0
+          h-[2px] w-0
           bg-primary
           group-hover:w-full
           transition-all duration-500

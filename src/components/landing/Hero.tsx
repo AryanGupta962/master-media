@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import JoinModal from "./Join/JoinModal";
 
 type ActiveWord = "masters" | "algorithm" | "break" | null;
 
 export default function Hero() {
   const [activeWord, setActiveWord] = useState<ActiveWord>(null);
+  const [open, setOpen] = useState(false);
 
   const getBgColor = () => {
     switch (activeWord) {
@@ -25,8 +27,9 @@ export default function Hero() {
 
   return (
     <section
-      className={`relative min-h-screen overflow-hidden flex items-center justify-center transition-colors duration-300  ${getBgColor()}`}
-    ><video
+      className={`relative min-h-screen overflow-hidden flex items-center justify-center px-4 lg:px-10 pt-25 md:pt-30 pb-15 transition-colors duration-300  ${getBgColor()}`}
+    >
+      <video
         className="absolute inset-0 -z-10 w-full object-cover"
         autoPlay
         loop
@@ -40,26 +43,26 @@ export default function Hero() {
       <div className="px-6 max-w-800 text-black">
         <div className="text-center">
           {/* Line 1 */}
-          <h1 className="font-72 font-extrabold mb-8 leading-tight">
+          <p className="font-72  mb-8 leading-tight">
             <span
               className={`transition-opacity duration-200 ${dim("masters")}`}
             >
-              We Are{" "}
+              We Are The{" "}
             </span>
 
             <span
               onMouseEnter={() => setActiveWord("masters")}
               onMouseLeave={() => setActiveWord(null)}
-              className={`cursor-pointer underline decoration-4 underline-offset-8 transition-opacity duration-200 ${dim(
+              className={`font-extrabold cursor-pointer transition-opacity duration-200 ${dim(
                 "masters",
               )}`}
             >
               Masters
             </span>
-          </h1>
+          </p>
 
           {/* Line 2 */}
-          <p className="font-36 mb-4">
+          <p className="font-38 font-semibold mb-4">
             <span
               className={`transition-opacity duration-200 ${dim("algorithm")}`}
             >
@@ -69,7 +72,7 @@ export default function Hero() {
             <span
               onMouseEnter={() => setActiveWord("algorithm")}
               onMouseLeave={() => setActiveWord(null)}
-              className={`font-extrabold cursor-pointer underline transition-opacity duration-200 ${dim(
+              className={`font-extrabold cursor-pointer transition-opacity duration-200 ${dim(
                 "algorithm",
               )}`}
             >
@@ -78,7 +81,7 @@ export default function Hero() {
           </p>
 
           {/* Line 3 */}
-          <p className="font-36 mb-10">
+          <p className="font-38 font-semibold 36 mb-10">
             <span className={`transition-opacity duration-200 ${dim("break")}`}>
               creative enough to{" "}
             </span>
@@ -86,7 +89,7 @@ export default function Hero() {
             <span
               onMouseEnter={() => setActiveWord("break")}
               onMouseLeave={() => setActiveWord(null)}
-              className={`font-extrabold cursor-pointer underline transition-opacity duration-200 ${dim(
+              className={`font-extrabold cursor-pointer transition-opacity duration-200 ${dim(
                 "break",
               )}`}
             >
@@ -105,13 +108,17 @@ export default function Hero() {
               activeWord ? "opacity-0" : "opacity-100"
             }`}
           >
-            <button className="p-2.5 sm:p-4 lg:px-10 lg:py-4 bg-primary-dark shadow-xl shadow-blue-950 text-white rounded-xl font-22 font-bold hover:-translate-y-1 hover:shadow-xl transition-all">
-              Get Started
-            </button>
-
-            <button className="p-2.5 sm:p-4 lg:px-10 lg:py-4 bg-black text-white shadow-xl shadow-gray-950 rounded-xl font-22 font-semibold hover:-translate-y-1 hover:shadow-xl transition-all">
-              View Work
-            </button>
+            <>
+              <button
+                onClick={() => setOpen(true)}
+                className="p-2.5 sm:p-4 lg:px-12 lg:py-3 bg-primary-dark shadow-xl shadow-blue-950 text-white rounded-xl font-26 font-bold hover:-translate-y-1 hover:shadow-xl transition-all"
+              >
+                Get Started
+              </button>
+              <div className="relative z-999">
+                <JoinModal open={open} onClose={() => setOpen(false)} />
+              </div>
+            </>
           </div>
         </div>
       </div>

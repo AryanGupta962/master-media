@@ -26,7 +26,7 @@ export default function ServicesHero() {
         We don&apos;t do boring marketing.
         <br />
         We build brands, break patterns, and create growth with a little
-        <span className="text-blue-400 font-semibold"> panga </span>
+        <span className="text-blue-600 font-semibold"> panga </span>
       </p>
     </motion.div>
   );

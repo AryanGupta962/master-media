@@ -31,8 +31,8 @@ const services: Service[] = [
   {
     title: "Performance Marketing",
     icon: FaChartLine,
-    tagline: "ROI so good, you'll think we're lying",
-    hoverText: "Numbers go up. That's the goal, right?",
+    tagline: "ROI so good, you&apos;ll think we&apos;re lying",
+    hoverText: "Numbers go up. That&apos;s the goal, right?",
     color: "#28377d",
   },
   {
@@ -54,11 +54,11 @@ const services: Service[] = [
     title: "Branding",
     icon: FaPaintBrush,
     tagline: "Make your logo less terrible",
-    hoverText: "We'll make you memorable for the right reasons.",
+    hoverText: "We&apos;ll make you memorable for the right reasons.",
     color: "#28377d",
   },
   {
-    title: "Social Ads",
+    title: "Social Media Ads",
     icon: FaAd,
     tagline: "Ads people actually click on",
     hoverText: "Scroll-stopping content that stops more than just thumbs.",
@@ -84,7 +84,7 @@ const ServiceCard3D = ({
   index,
 }: ServiceCard3DProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(true);
   const [showSecret, setShowSecret] = useState(false);
 
   // Mouse position tracking
@@ -122,7 +122,7 @@ const ServiceCard3D = ({
   const handleMouseLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
-    setIsHovered(false);
+    setIsHovered(true);
     setShowSecret(false);
   };
 
@@ -148,7 +148,7 @@ const ServiceCard3D = ({
         transformStyle: "preserve-3d",
         perspective: 1000,
       }}
-      className="relative cursor-pointer rounded-3xl border-2 border-gray-600/30"
+      className="relative cursor-pointer rounded-3xl border-2 border-gray-600/10"
     >
       <motion.div
         className="absolute inset-0 rounded-3xl blur-xl opacity-0"
@@ -163,7 +163,12 @@ const ServiceCard3D = ({
 
       {/* Main card */}
       <motion.div
-        className="relative min-w-[280px] sm:min-w-[320px] h-[360px] rounded-3xl border-2 overflow-hidden"
+       className="relative 
+  min-w-[240px] sm:min-w-[300px] 
+  h-[300px] sm:h-[340px] lg:h-[360px] 
+  rounded-2xl sm:rounded-3xl 
+  border-2 overflow-hidden"
+
         style={{
           borderColor: isHovered ? color : "rgba(255,255,255,0.1)",
           background:
@@ -184,7 +189,8 @@ const ServiceCard3D = ({
         />
 
         {/* Content */}
-        <div className="relative z-10 h-full p-8 flex flex-col">
+      <div className="relative z-10 h-full p-5 sm:p-6 lg:p-8 flex flex-col">
+
           {/* Icon with 3D effect */}
           <motion.div
             animate={{
@@ -196,7 +202,10 @@ const ServiceCard3D = ({
             }}
           >
             <motion.div
-              className="w-20 h-20 rounded-2xl flex items-center justify-center mb-6"
+              className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 
+rounded-xl sm:rounded-2xl 
+flex items-center justify-center mb-4 sm:mb-6"
+
               style={{
                 backgroundColor: color,
                 boxShadow: isHovered
@@ -356,10 +365,10 @@ const Services = () => {
             SERVICES
           </motion.div>
           <h2
-            className="font-72 font-black mb-4"
+            className="font-72 font-black mb-3"
             style={{
               color: "#171717",
-              fontFamily: "'Helvetica Neue', sans-serif",
+              fontFamily: "&apos;Helvetica Neue&apos;, sans-serif",
               letterSpacing: "-0.02em",
             }}
           >
@@ -371,7 +380,7 @@ const Services = () => {
           >
             High-impact solutions for modern brands. No fluff, just results.
             <br />
-            <span className="font-14">(And maybe a little bit of humor)</span>
+            {/* <span className="font-16">(And maybe a little bit of humor)</span> */}
           </p>
         </motion.div>
 
@@ -379,14 +388,14 @@ const Services = () => {
         <div className="md:hidden">
           <motion.div
             ref={carouselRef}
-            className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide"
+            className="flex gap-4 sm:gap-6 overflow-x-auto py-8 snap-x snap-mandatory scrollbar-hide"
             style={{ scrollbarWidth: "none" }}
             onMouseDown={() => setIsDragging(true)}
             onMouseUp={() => setIsDragging(false)}
             onMouseLeave={() => setIsDragging(false)}
           >
             {services.map((s, i) => (
-              <div key={i} className="snap-center flex-shrink-0">
+              <div key={i} className="snap-center shrink-0">
                 <ServiceCard3D
                   title={s.title}
                   icon={s.icon}
@@ -398,7 +407,7 @@ const Services = () => {
               </div>
             ))}
           </motion.div>
-          <p className="text-center font-14 mt-4" style={{ color: "#9f9f9f" }}>
+          <p className="text-center font-16 mt-4" style={{ color: "#000000" }}>
             ← Swipe to explore →
           </p>
         </div>
@@ -432,7 +441,7 @@ const Services = () => {
           transition={{ delay: 0.8 }}
           className="text-center mt-16"
         >
-          <p className="font-18" style={{ color: "#9f9f9f" }}>
+          <p className="font-22" style={{ color: "#736D6C" }}>
             Need something custom? Were flexible like yoga instructors.{" "}
             <motion.span
               whileHover={{ scale: 1.1, color: "#324dd3" }}

@@ -1,28 +1,30 @@
 "use client";
 
 import toast from "react-hot-toast";
-import ClientSuccessSection from "@/src/components/about/CustomerDelightSection";
-import ImageBelt from "@/src/components/about/ImageBelt";
+import ClientSuccessSection from "@/src/components/about-us/CustomerDelightSection";
+import ImageBelt from "@/src/components/about-us/ImageBelt";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import ReachOptions from "@/src/components/services/ReachOptions";
+import CoreValuesSection from "@/src/components/about-us/CoreValuesSection";
 
 const founders = [
   {
     name: "Mr. Abhi",
     role: "CEO & Co-Founder",
     image: "/abhi.jpg", // put image in public folder
-    bio: `The brain behind the brand. Sahil believes marketing isn't about selling —
-    it's about storytelling that converts. When he's not building empires,
-    he's probably planning the next one.`,
+    bio: `The brain behind the brand. Sahil believes marketing isn&apos;t about selling —
+    it&apos;s about storytelling that converts. When he&apos;s not building empires,
+    he&apos;s probably planning the next one.`,
   },
   {
     name: "Mr. Gupta",
     role: "Co-Founder",
     image: "/gupta.jpg",
     bio: `Strategic thinker. Vision architect. Calm in chaos.
-    Jestin ensures Master Media doesn't just follow trends —
-    we create them. Also secretly the team's problem-solver.`,
+    Jestin ensures Master Media doesn&apos;t just follow trends —
+    we create them. Also secretly the team&apos;s problem-solver.`,
   },
 ];
 
@@ -127,10 +129,11 @@ export default function AboutPage() {
       </section>
 
       <ClientSuccessSection />
+      <CoreValuesSection />
       <ImageBelt />
 
       {/* CTA SECTION */}
-      <section className="py-20 text-center bg-primary text-white">
+      {/* <section className="py-20 text-center bg-primary text-white">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -149,17 +152,16 @@ export default function AboutPage() {
         </motion.p>
 
         <motion.button
-  whileHover={{ scale: 1.1 }}
-  whileTap={{ scale: 0.95 }}
-  onClick={() => {
-    toast.success("🚀 Great! Let’s build something amazing together.");
-  }}
-  className="mt-8 px-8 py-3 bg-white text-primary font-semibold rounded-lg shadow-lg"
->
-  Let’s Talk 🚀
-</motion.button>
-
-      </section>
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => {
+            toast.success("Great! Let’s build something amazing together.");
+          }}
+          className="mt-8 px-8 py-3 bg-white text-primary font-semibold rounded-lg shadow-lg"
+        >
+          Let’s Talk!
+        </motion.button>
+      </section> */}
     </div>
   );
 }
