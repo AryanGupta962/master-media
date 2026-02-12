@@ -23,7 +23,7 @@ type NavItem = {
 const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/", icon: <BiHomeSmile /> },
   { label: "Services", href: "/services", icon: <FaServicestack /> },
-  { label: "Our Work", href: "/our-works", icon: <FaBriefcase /> },
+  { label: "About Us", href: "/about-us", icon: <FaBriefcase /> },
   { label: "Careers", href: "/careers", icon: <FaRocket /> },
   { label: "Contact", href: "/contact", icon: <FaEnvelope /> },
 ];
