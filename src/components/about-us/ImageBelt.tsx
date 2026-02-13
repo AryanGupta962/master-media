@@ -6,22 +6,22 @@ import { useRef, useState } from "react";
 
 const images = [
   {
-    src: "/images/belt.jpg",
+    src: "/images/belt-d.jpg",
     title: "Creative Workspaces",
     desc: "Where strategy meets creativity and ideas turn into campaigns.",
   },
   {
-    src: "/images/belt.jpg",
+    src: "/images/belt-d.jpg",
     title: "Collaborative Culture",
     desc: "Team-driven thinking that fuels measurable digital growth.",
   },
   {
-    src: "/images/belt.jpg",
+    src: "/images/belt-d.jpg",
     title: "Performance Driven",
     desc: "Every project backed by data, clarity, and conversion focus.",
   },
   {
-    src: "/images/belt.jpg",
+    src: "/images/belt-d.jpg",
     title: "Innovative Systems",
     desc: "Automation, funnels, and scalable marketing infrastructure.",
   },

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { AiOutlineCopyright } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
 import {
   FaInstagram,
@@ -8,6 +9,7 @@ import {
   FaLinkedinIn,
   FaArrowUp,
 } from "react-icons/fa6";
+import { GiCoffeeCup } from "react-icons/gi";
 
 export default function Footer() {
   return (
@@ -15,7 +17,6 @@ export default function Footer() {
       <div className="mx-auto max-w-400 px-6 pt-10 pb-5">
         {/* TOP GRID */}
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-5 lg:justify-between">
-          {/* INTRO */}
           <div className="max-w-xl text-center lg:text-left">
             <h3 className="mb-4 text-2xl font-bold leading-snug">
               Congrats! <br />
@@ -33,22 +34,21 @@ export default function Footer() {
 
               <p className="max-w-xl text-base leading-relaxed text-white/70">
                 Master Media is an elite, Pan-India digital marketing agency
-                powered by squad of &quot;Dhurandhar&quot; specialists. We deliver
-                results-first, full-stack &quot;Damdaar&quot; creative solutions
-                for ambitious brands that refuse average growth.
+                powered by squad of &quot;Dhurandhar&quot; specialists. We
+                deliver results-first, full-stack &quot;Damdaar&quot; creative
+                solutions for ambitious brands that refuse average growth.
               </p>
             </div>
           </div>
 
           {/* LINKS GRID */}
           <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-2 lg:grid-cols-3 lg:gap-16 lg:text-left">
-            {/* COMPANY */}
             <div>
               <p className="mb-4 text-lg uppercase tracking-wider font-bold text-gray-300">
                 Company
               </p>
               <div className="flex flex-col gap-3 text-base font-medium items-center lg:items-start">
-                {["About Us", "Services", "Our Work", "Careers"].map((item) => (
+                {["About Us", "Services", "Career"].map((item) => (
                   <Link
                     key={item}
                     href={`/${item.toLowerCase().replace(/\s/g, "-")}`}
@@ -63,20 +63,22 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* RESOURCES */}
             <div>
               <p className="mb-4 text-lg uppercase tracking-wider font-bold text-gray-300">
                 Resources
               </p>
               <div className="flex flex-col gap-3 text-base font-medium items-center lg:items-start">
-                {["Contact Us", "Privacy Policy"].map((item) => (
+                {[
+                  { title: "Contact Us", url: "/contact" },
+                  { title: "Privacy Policy", url: "/privacy" },
+                ].map((item) => (
                   <Link
-                    key={item}
-                    href={`/${item.toLowerCase().replace(/\s/g, "-")}`}
+                    key={item.title}
+                    href={item.url}
                     className="group w-fit"
                   >
                     <span className="relative">
-                      {item}
+                      {item.title}
                       <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-white transition-all group-hover:w-full" />
                     </span>
                   </Link>
@@ -131,10 +133,15 @@ export default function Footer() {
 
         {/* BOTTOM BAR */}
         <div className="mt-8 flex flex-col gap-5 border-t border-white/15 pt-4 text-center sm:flex-row sm:items-center sm:justify-between">
-          <span className="text-white/60">
-            © {new Date().getFullYear()} Master Media. Built with ☕ & ideas.
+          <span className="flex flex-wrap items-center justify-center gap-1 text-white/60 text-sm md:text-base leading-normal tracking-normal whitespace-nowrap">
+            <AiOutlineCopyright />
+            <span>{new Date().getFullYear()} Master Media.</span>
+            <span className="flex items-center gap-1">
+              Built with
+              <GiCoffeeCup className="text-amber-400 animate-pulse text-lg" />&
+              ideas. | 🇮🇳
+            </span>
           </span>
-
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="group mx-auto sm:mx-0 flex items-center gap-2 rounded-full border border-white/40 px-5 py-2 font-medium transition hover:bg-white hover:text-primary-dark"

@@ -37,9 +37,9 @@ export default function CoreValuesSection() {
       className="
         py-28
         bg-gradient-to-b
-        from-[#f7f9ff]
-        via-[#eef2ff]
-        to-[#e9eeff]
+        from-[#eff2fc]
+        via-[#c7d0f3]
+        to-[#d1dbfd]
       "
     >
       {/* Heading */}

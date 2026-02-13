@@ -24,6 +24,8 @@ type Props = {
 };
 
 export default function ServiceCard({ title, desc, icon: Icon, index }: Props) {
+  const formattedNumber = String(index + 1).padStart(2, "0");
+
   return (
     <motion.div
       variants={fadeUp}
@@ -35,7 +37,7 @@ export default function ServiceCard({ title, desc, icon: Icon, index }: Props) {
       transition={{ duration: 0.3 }}
       className="
         group relative overflow-hidden
-        rounded-3xl p-7 sm:p-8
+        rounded-3xl p-6
         bg-white
         border border-black/5
         shadow-[0_10px_30px_rgba(0,0,0,0.04)]
@@ -43,10 +45,24 @@ export default function ServiceCard({ title, desc, icon: Icon, index }: Props) {
         transition-all duration-300
       "
     >
-      {/* Left Accent Line */}
+      <span
+        className="
+          absolute top-2 right-4
+          text-[100px] sm:text-[120px]
+          font-bold
+          text-black/5
+          leading-none
+          select-none
+          pointer-events-none
+          z-0
+        "
+      >
+        {formattedNumber}
+      </span>
+
+      {/* Left Accent Line (unchanged) */}
       <span className="absolute left-0 top-0 h-full w-[4px] bg-primary rounded-l-3xl" />
 
-      {/* Right Gradient Curve */}
       <span
         className="
           absolute top-0 right-0 h-full w-24
@@ -60,29 +76,28 @@ export default function ServiceCard({ title, desc, icon: Icon, index }: Props) {
         "
       />
 
-      {/* Icon */}
-      <div
-        className="
-          w-12 h-12 mb-6
-          rounded-2xl
-          flex items-center justify-center
-          bg-primary/10
-          text-primary
-          text-xl
-        "
-      >
-        <Icon />
+      <div className="relative z-10">
+        <div
+          className="
+            w-12 h-12 mb-6
+            rounded-2xl
+            flex items-center justify-center
+            bg-primary/10
+            text-primary
+            text-xl
+          "
+        >
+          <Icon />
+        </div>
+
+        <h3 className="text-lg sm:text-xl font-semibold text-black mb-3">
+          {title}
+        </h3>
+
+        <p className="text-sm sm:text-base text-black/60 leading-relaxed">
+          {desc}
+        </p>
       </div>
-
-      {/* Title */}
-      <h3 className="text-lg sm:text-xl font-semibold text-black mb-3">
-        {title}
-      </h3>
-
-      {/* Description */}
-      <p className="text-sm sm:text-base text-black/60 leading-relaxed">
-        {desc}
-      </p>
 
       {/* Bottom Line */}
       <span
@@ -91,8 +106,7 @@ export default function ServiceCard({ title, desc, icon: Icon, index }: Props) {
           h-[2px] w-0
           bg-primary
           group-hover:w-full
-          transition-all duration-500
-        "
+"
       />
     </motion.div>
   );

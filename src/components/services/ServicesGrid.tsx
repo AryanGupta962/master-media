@@ -4,10 +4,18 @@ import ServiceCard from "./ServiceCard";
 
 export default function ServicesGrid() {
   return (
-    <div className="max-w-400 px-4 lg:px-10 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {services.map((service, i) => (
-        <ServiceCard key={service.title} index={i} {...service} />
-      ))}
-    </div>
+    <>
+      <div className="max-w-400 px-4 lg:px-10 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service, i) => (
+          <ServiceCard key={service.title} index={i} {...service} />
+        ))}
+      </div>
+      <div className="mt-24 text-center text-gray-400">
+        <p className="font-24">
+          Social Media • Performance Marketing • Influencer Marketing • Branding
+          • Web Development
+        </p>
+      </div>
+    </>
   );
 }

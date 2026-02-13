@@ -193,7 +193,7 @@ export default function JoinForm() {
           <p className="font-16 text-gray-500 text-center pt-2">
             By submitting, you agree to our{" "}
             <Link
-              href={"/privacy-policy"}
+              href={"/privacy"}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 cursor-pointer hover:text-blue-400"
