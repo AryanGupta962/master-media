@@ -1,4 +1,4 @@
-import JoinForm from "./contactForm";
+import JoinForm from "../../src/components/contact/contactForm";
 
 export default function contact() {
   return (
