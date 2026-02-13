@@ -46,27 +46,36 @@ function Founders() {
 
 export default Founders;
 
-// --compo--
 
 function FlipCard({ founder }: any) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
     <div
-      className="relative w-full h-[420px] perspective"
+      className="relative w-full h-[420px]"
+      style={{ perspective: "1200px" }}   // 🔑 isolate perspective per card
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative w-full h-full transition-transform duration-700 preserve-3d"
-        style={{ transformStyle: "preserve-3d" }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="relative w-full h-full"
+        style={{
+          transformStyle: "preserve-3d",
+        }}
       >
         {/* FRONT */}
         <div
-          className="absolute w-full h-full bg-white rounded-xl shadow-xl flex flex-col items-center justify-center p-6 backface-hidden border border-gray-200"
-          style={{ backfaceVisibility: "hidden" }}
+          className="
+            absolute inset-0
+            bg-white rounded-xl
+            shadow-xl border border-gray-200
+            flex flex-col items-center justify-center p-6
+          "
+          style={{
+            backfaceVisibility: "hidden",
+          }}
         >
           <Image
             src={founder.image}
@@ -83,13 +92,20 @@ function FlipCard({ founder }: any) {
 
         {/* BACK */}
         <div
-          className="absolute w-full h-full bg-primary text-white rounded-xl shadow-xl flex items-center justify-center p-8 rotateY-180"
+          className="
+            absolute inset-0
+            bg-primary text-white rounded-xl
+            shadow-xl
+            flex items-center justify-center p-8
+          "
           style={{
             backfaceVisibility: "hidden",
-            transform: "rotateY(180deg)",
+            transform: "rotateY(180deg)", // 🔑 only here
           }}
         >
-          <p className="text-lg leading-relaxed">{founder.bio}</p>
+          <p className="text-lg leading-relaxed text-center">
+            {founder.bio}
+          </p>
         </div>
       </motion.div>
     </div>

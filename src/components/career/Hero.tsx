@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 function Hero() {
   return (
-    <section className="relative bg-primary text-black px-4 lg:px-10 pt-25 md:pt-30px-6 py-24 pb-15">
+    <section className="relative bg-primary text-black px-4 lg:px-10 pt-30 md:pt-30px-6 py-24 pb-15">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -11,11 +11,17 @@ function Hero() {
           transition={{ duration: 0.8 }}
           className="font-extrabold leading-none"
         >
-          <h1 className="text-[clamp(3rem,7vw,6rem)] tracking-tight">
-            <span className="block text-transparent stroke-text">MM</span>
-            <span className="block text-transparent stroke-text">HOW</span>
-            <span className="block text-transparent stroke-text">WHY</span>
-            <span className="block text-black">WHAT</span>
+          <h1 className="text-[clamp(4rem,7vw,5rem)] tracking-tight">
+            <span className="block text-transparent [text-shadow:1.5px_1.5px_0_#facc15,-1.5px_1.5px_0_#facc15,1.5px_-1.5px_0_#facc15,-1.5px_-1.5px_0_#facc15]">
+              Master Media,
+            </span>
+            <span className="block text-transparent stroke-text">
+              HOW
+            </span>
+            <span className="block text-transparent stroke-text">
+              WHY
+            </span>
+            <span className="block text-gray-300">WHAT ?</span>
           </h1>
         </motion.div>
 
@@ -34,6 +40,12 @@ function Hero() {
           <span className="absolute left-[-14px] bottom-10 w-0 h-0 border-t-14 border-t-transparent border-b-14 border-b-transparent border-r-14 border-r-white" />
         </motion.div>
       </div>
+
+      <style jsx global>{`
+        .stroke-text {
+          -webkit-text-stroke: 2px yellow;
+        }
+      `}</style>
     </section>
   );
 }

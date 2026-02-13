@@ -13,8 +13,8 @@ import { GiCoffeeCup } from "react-icons/gi";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-primary-dark text-white font-sans overflow-hidden">
-      <div className="mx-auto max-w-400 px-6 pt-10 pb-5">
+    <footer className="relative bg-primary-dark text-white font-sans p-4 lg:p-10 overflow-hidden">
+      <div className="mx-auto max-w-400 pb-5">
         {/* TOP GRID */}
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-5 lg:justify-between">
           <div className="max-w-xl text-center lg:text-left">
@@ -135,11 +135,11 @@ export default function Footer() {
         <div className="mt-8 flex flex-col gap-5 border-t border-white/15 pt-4 text-center sm:flex-row sm:items-center sm:justify-between">
           <span className="flex flex-wrap items-center justify-center gap-1 text-white/60 text-sm md:text-base leading-normal tracking-normal whitespace-nowrap">
             <AiOutlineCopyright />
-            <span>{new Date().getFullYear()} Master Media.</span>
-            <span className="flex items-center gap-1">
-              Built with
+            <span>{new Date().getFullYear()} Master Media, 🇮🇳 All right reserved.</span>
+            <span className="flex items-center gap-1 italic">
+              "Built with
               <GiCoffeeCup className="text-amber-400 animate-pulse text-lg" />&
-              ideas. | 🇮🇳
+              ideas."
             </span>
           </span>
           <button

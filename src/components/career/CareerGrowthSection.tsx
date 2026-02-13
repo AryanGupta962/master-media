@@ -38,7 +38,7 @@ export default function CareerGrowthSection() {
           <h2 className="text-3xl md:text-5xl font-bold">
             Where Small Opportunities Create Big Careers
           </h2>
-          <p className="text-gray/40 mt-4 max-w-2xl mx-auto">
+          <p className="text-white mt-4 max-w-2xl mx-auto">
             At Master Media, even a small chance can unlock extraordinary professional growth.
           </p>
         </motion.div>
@@ -58,15 +58,15 @@ export default function CareerGrowthSection() {
               <Image
                 src="/images/career.jpg"  // replace with your image
                 alt="Career Growth"
-                width={600}
-                height={600}
+                width={500}
+                height={500}
                 className="w-full h-auto object-cover rounded-xl"
               />
             </div>
           </motion.div>
 
           {/* Right Cards */}
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-8">
 
             {benefits.map((item, index) => (
               <motion.div
@@ -77,8 +77,8 @@ export default function CareerGrowthSection() {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.04 }}
                 className="
-                  bg-[var(--color-primary-darker)]
-                  hover:bg-[var(--color-gray)]
+                  bg-primary-dark
+                  hover:bg-gray
                   transition-all duration-300
                   rounded-xl
                   p-8

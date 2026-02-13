@@ -1,9 +1,33 @@
-export default function Loading() {
-  return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-primary-light/50">
-      <span className="text-lg font-semibold tracking-wide">Master Media</span>
+"use client";
 
-      <div className="h-12 w-12 animate-spin rounded-full border-4 border-neutral-300 border-t-neutral-900 dark:border-neutral-700 dark:border-t-white" />
+import { useEffect } from "react";
+
+export default function Loading() {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  return (
+    <div
+      className="
+        fixed inset-0 z-[9999]
+        flex items-center justify-center
+        bg-linear-to-br
+        from-[#0a0f2c]
+        via-[#0b143a]
+        to-[#050814]
+      "
+    >
+
+      <div className="grid grid-cols-2 gap-3">
+        <span className="loader-box delay-0" />
+        <span className="loader-box delay-150" />
+        <span className="loader-box delay-300" />
+        <span className="loader-box delay-450" />
+      </div>
     </div>
   );
 }

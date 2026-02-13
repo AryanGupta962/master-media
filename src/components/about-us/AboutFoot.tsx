@@ -1,12 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import { GoArrowRight } from "react-icons/go";
 
 const AboutFoot = () => {
   return (
     <section className="relative w-full bg-primary-light text-white overflow-hidden">
-      <div className="absolute inset-0 opacity-100 bg-[url('/layers/layer.png')] bg-no-repeat bg-left bg-contain"></div>
+      <div className="absolute -bottom-80 inset-0 opacity-100 bg-[url('/layers/layer.png')] bg-no-repeat bg-left bg-cover"></div>
 
-      <div className="relative max-w-[1600px] mx-auto px-4 md:px-10 py-15">
+      <div className="relative max-w-400 mx-auto px-4 md:px-10 py-15">
         <div className="max-w-3xl">
           <h1 className="font-48 font-bold leading-tight mb-6">
             We Don’t Just Build Media.
@@ -21,10 +22,17 @@ const AboutFoot = () => {
           </p>
 
           <Link
-            href={"/services"}
-            className="bg-primary-dark hover:bg-primary transition px-6 py-3 rounded-md font-semibold text-lg"
+            href="/services"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-md bg-primary-dark hover:bg-primary text-white font-semibold text-lg
+              transition-all duration-300
+              group
+            "
           >
-            Explore Our Services →
+            Explore Our Services
+            <GoArrowRight
+              size={22}
+              className=" transition-transform duration-300 group-hover:translate-x-1.5"
+            />
           </Link>
         </div>
       </div>

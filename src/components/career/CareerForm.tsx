@@ -14,11 +14,7 @@ const schema = z.object({
     .max(50, "Name is too long")
     .regex(/^[a-zA-Z\s]+$/, "Only letters allowed"),
 
-  email: z
-    .string()
-    .trim()
-    .email("Enter a valid email address")
-    .max(100),
+  email: z.string().trim().email("Enter a valid email address").max(100),
 
   phone: z
     .string()
@@ -30,10 +26,7 @@ const schema = z.object({
     .trim()
     .url("Enter valid resume URL (Drive / Dropbox etc.)"),
 
-  linkedin_url: z
-    .string()
-    .trim()
-    .url("Enter valid LinkedIn profile URL"),
+  linkedin_url: z.string().trim().url("Enter valid LinkedIn profile URL"),
 
   message: z
     .string()
@@ -55,143 +48,139 @@ export default function CareerForm() {
     resolver: zodResolver(schema),
   });
 
-const onSubmit = async (data: FormData) => {
-  const toastId = toast.loading("Submitting application...");
+  const onSubmit = async (data: FormData) => {
+    const toastId = toast.loading("Submitting application...");
 
-  try {
-    const payload = {
-      ...data,
-      message: data.message?.trim() ? data.message : "-",
-    };
+    try {
+      const payload = {
+        ...data,
+        message: data.message?.trim() ? data.message : "-",
+      };
 
-    const response = await fetch("/api/career", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+      const response = await fetch("/api/career", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    if (!response.ok || !result.ok) {
-      throw new Error(result.error || "Submission failed");
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || "Submission failed");
+      }
+
+      toast.success("Application submitted successfully!", {
+        id: toastId,
+      });
+
+      reset();
+    } catch (err: any) {
+      toast.error(err.message || "Something went wrong. Try again.", {
+        id: toastId,
+      });
     }
-
-    toast.success("🎉 Application submitted successfully!", {
-      id: toastId,
-    });
-
-    reset();
-  } catch (err: any) {
-    toast.error(err.message || "Something went wrong. Try again.", {
-      id: toastId,
-    });
-  }
-};
-
+  };
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 py-12">
-      {/* Header */}
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-primary">
-          Join Master Media 🚀
-        </h2>
-        <p className="text-gray-600 mt-3">
-          Apply now and become part of a fast-growing digital team.
-        </p>
-      </div>
+    <div className="w-full bg-white py-10">
+      <div className="max-w-3xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h2 className="font-38 font-bold text-primary">Join Master Media.</h2>
+          <p className="font-20 text-gray-600 mt-3">
+            Apply now and become part of a fast-growing digital team with passion.
+          </p>
+        </div>
 
-      {/* Form Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 border border-gray-100"
-      >
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-
-          {/* Input Fields */}
-          {[
-            ["name", "Full Name"],
-            ["email", "Email Address"],
-            ["phone", "Phone Number"],
-            ["resume_link", "Resume Link (Drive / Dropbox)"],
-            ["linkedin_url", "LinkedIn Profile URL"],
-          ].map(([key, label], index) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="space-y-1"
-            >
-              <input
-                {...register(key as keyof FormData)}
-                disabled={isSubmitting}
-                placeholder={label}
-                className="
+        {/* Form Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-white shadow-xl rounded-2xl p-5 border border-gray-100"
+        >
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+            {/* Input Fields */}
+            {[
+              ["name", "Full Name*"],
+              ["email", "Email Address*"],
+              ["phone", "Phone Number*"],
+              ["resume_link", "Resume Link* (Drive / Dropbox)"],
+              ["linkedin_url", "LinkedIn Profile URL*"],
+            ].map(([key, label], index) => (
+              <motion.div
+                key={key}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="space-y-1"
+              >
+                <input
+                  {...register(key as keyof FormData)}
+                  disabled={isSubmitting}
+                  placeholder={label}
+                  className="
                   w-full rounded-xl px-4 py-3
                   border border-gray-200 bg-white text-black
-                  text-sm
+                  font-16
                   focus:outline-none
-                  focus:ring-2 focus:ring-primary
+                  focus:ring-1 focus:ring-primary
                   focus:border-primary
                   transition
                 "
-              />
+                />
 
-              {errors[key as keyof FormData] && (
-                <p className="text-xs text-red-500">
-                  {errors[key as keyof FormData]?.message}
-                </p>
-              )}
-            </motion.div>
-          ))}
+                {errors[key as keyof FormData] && (
+                  <p className="text-xs text-red-500">
+                    {errors[key as keyof FormData]?.message}
+                  </p>
+                )}
+              </motion.div>
+            ))}
 
-          {/* Message (Optional) */}
-          <div className="space-y-1">
-            <textarea
-              rows={4}
-              {...register("message")}
-              disabled={isSubmitting}
-              placeholder="Optional message (Why should we hire you?)"
-              className="
+            {/* Message (Optional) */}
+            <div className="space-y-1">
+              <textarea
+                rows={3}
+                {...register("message")}
+                disabled={isSubmitting}
+                placeholder="Optional message (Why should we hire you?)"
+                className="
                 w-full rounded-xl px-4 py-3
-                border border-gray-200
-                text-sm resize-none
+                border border-gray-200 bg-white text-black
+                font-16 resize-none
                 focus:outline-none
-                focus:ring-2 focus:ring-primary
+                focus:ring-1 focus:ring-primary
                 focus:border-primary
                 transition
               "
-            />
+              />
 
-            {errors.message && (
-              <p className="text-xs text-red-500">
-                {errors.message.message}
-              </p>
-            )}
-          </div>
+              {errors.message && (
+                <p className=" text-red-500">{errors.message.message}</p>
+              )}
+            </div>
 
-          {/* Submit Button */}
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            type="submit"
-            disabled={isSubmitting}
-            className="
+            {/* Submit Button */}
+            <motion.button
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.97 }}
+              type="submit"
+              disabled={isSubmitting}
+              className="
               w-full
               bg-primary hover:opacity-90
               text-white py-3 rounded-xl
-              font-semibold text-sm
+              font-semibold font-16 cursor-pointer
               transition
               disabled:opacity-70
             "
-          >
-            {isSubmitting ? "Submitting..." : "Submit Application"}
-          </motion.button>
-        </form>
-      </motion.div>
+            >
+              {isSubmitting ? "Submitting..." : "Submit Application"}
+            </motion.button>
+          </form>
+        </motion.div>
+      </div>
     </div>
   );
 }

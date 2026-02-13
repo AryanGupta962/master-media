@@ -83,7 +83,7 @@ export default function JoinForm() {
           Still having second thoughts?{" "}
           <span className="text-blue-600">
             <span className="sm:hidden">
-              <br />0
+              <br />
             </span>
             Let’s talk.
           </span>

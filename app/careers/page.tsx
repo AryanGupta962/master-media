@@ -14,13 +14,6 @@ export default function Career() {
       <CareerGrowthSection />
       <CareerForm />
       <FootNote />
-
-      {/* Tailwind helper */}
-      <style jsx global>{`
-        .stroke-text {
-          -webkit-text-stroke: 2px red;
-        }
-      `}</style>
     </main>
   );
 }
