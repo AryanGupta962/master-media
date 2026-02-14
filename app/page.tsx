@@ -3,6 +3,7 @@ import MosaicCollageDemo from "@/src/components/landing/CollageDemo";
 import Hero from "@/src/components/landing/Hero";
 import JoinUI from "@/src/components/landing/JoinUI";
 import Mastery from "@/src/components/landing/Mastery";
+import Media from "@/src/components/landing/Media";
 import OverallStats from "@/src/components/landing/OverallStats";
 import PartnerBelt from "@/src/components/landing/PartnerBelt";
 import Reviews from "@/src/components/landing/Reviews";
@@ -16,7 +17,8 @@ export default function Home() {
       <Hero />
       {/* <WhatWeDo /> */}
       <Services />
-      <MosaicCollageDemo />
+      {/* <MosaicCollageDemo /> */}
+      <Media/>
       <PartnerBelt/>
       <VideoGallery />
       <Reviews />

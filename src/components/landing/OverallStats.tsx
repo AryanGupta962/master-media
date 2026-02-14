@@ -59,7 +59,7 @@ export default function OverallStats() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mt-10 flex flex-col sm:flex-row gap-5 justify-center"
+          className="mt-10 flex flex-col sm:flex-row gap-2 md:gap-5 justify-center"
         >
           <>
             <button
