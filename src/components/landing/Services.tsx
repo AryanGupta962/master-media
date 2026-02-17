@@ -1100,7 +1100,8 @@ const Services = () => {
             style={{ color: "#171717" }}
           >
             Need something custom? We're flexible like yoga instructors.{" "}
-            <motion.span
+            <motion.a
+            href="/contact"
               whileHover={{
                 scale: 1.05,
                 x: 5,
@@ -1120,7 +1121,7 @@ const Services = () => {
               >
                 →
               </motion.span>
-            </motion.span>
+            </motion.a>
           </p>
         </motion.div>
       </div>

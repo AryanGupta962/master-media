@@ -52,6 +52,20 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [lastScrollY]);
 
+  useEffect(() => {
+    if (open) {
+      // lock scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // unlock scroll
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <>
       <header className="fixed top-0 z-50 w-full px-4 lg:px-10 font-sans">
@@ -60,7 +74,7 @@ export default function Header() {
           ${scrollDir === "up" ? "mt-4 scale-[1.01]" : "mt-6 scale-100"}`}
         >
           <div
-            className={`flex h-14 md:h-18 items-center justify-between rounded-2xl px-6 backdrop-blur-lg
+            className={`flex h-16 md:h-18 items-center justify-between rounded-2xl px-6 backdrop-blur-lg
             transition-all duration-500 ease-out
             ${
               scrollDir === "up"
@@ -126,7 +140,7 @@ export default function Header() {
               onClick={() => setOpen(true)}
               className="lg:hidden font-24 text-black"
             >
-              <FaBars />
+              <FaBars size={24} />
             </button>
           </div>
         </div>
@@ -134,7 +148,7 @@ export default function Header() {
 
       {/* OVERLAY */}
       <div
-        className={`fixed inset-0 z-40 bg-black/40 transition-opacity
+        className={`fixed inset-0 z-50 bg-black/75 transition-opacity
         ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
         onClick={() => setOpen(false)}
       />
@@ -148,7 +162,7 @@ export default function Header() {
         <div className="flex items-center justify-between border-b border-primary-light/50 pb-4">
           <span className="font-20 text-black font-semibold">Master Media</span>
           <button onClick={() => setOpen(false)} className="font-20 text-black">
-            <FaTimes />
+            <FaTimes size={20} />
           </button>
         </div>
 

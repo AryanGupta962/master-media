@@ -10,8 +10,10 @@ import Image from "next/image";
 import { GoGoal } from "react-icons/go";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+
 import "swiper/css";
 import "swiper/css/pagination";
+import { useIsMobile } from "@/src/utils/hooks/useIsMobile";
 
 type ActiveWord = "masters" | "algorithm" | "break" | null;
 
@@ -63,6 +65,8 @@ const DataStream = ({ index }: { index: number }) => {
 export default function Hero() {
   const [activeWord, setActiveWord] = useState<ActiveWord>(null);
   const [open, setOpen] = useState(false);
+
+  const isMobile = useIsMobile();
 
   const streams = useMemo(() => Array.from({ length: 15 }), []);
 
@@ -144,48 +148,45 @@ export default function Hero() {
         </motion.div>
 
         {/* Mobile Swiper */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="sm:hidden mb-12"
-        >
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            slidesPerView={1.15}
-            spaceBetween={20}
-            centeredSlides
-            loop
-            speed={800}
-            resistance
-            resistanceRatio={0.85}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            grabCursor
+        {isMobile && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mb-10 px-4"
           >
-            {stats.map((stat, i) => (
-              <SwiperSlide key={i}>
-                <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md text-center transition-all duration-500 active:scale-95">
-                  <div className="flex items-center justify-center mb-3 opacity-80">
-                    {stat.icon}
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              slidesPerView={1}
+              spaceBetween={20}
+              centeredSlides
+              loop
+              speed={800}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              pagination={{ clickable: true }}
+              grabCursor
+            >
+              {stats.map((stat, i) => (
+                <SwiperSlide key={i}>
+                  <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md text-center">
+                    <div className="flex items-center justify-center mb-3 opacity-80">
+                      {stat.icon}
+                    </div>
+                    <div className="text-3xl font-black text-white">
+                      {stat.val}
+                    </div>
+                    <div className="text-[11px] uppercase tracking-widest text-slate-500 font-black mt-2">
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className="text-3xl font-black text-white">
-                    {stat.val}
-                  </div>
-                  <div className="text-[11px] uppercase tracking-widest text-slate-500 font-black mt-2">
-                    {stat.label}
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </motion.div>
+        )}
 
         {/* CTA Section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
@@ -196,7 +197,7 @@ export default function Hero() {
               boxShadow: "0 20px 40px rgba(37, 99, 235, 0.25)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-2.5 bg-primary text-white rounded-lg font-black text-lg relative overflow-hidden group shadow-xl"
+            className="px-10 py-2.5 bg-primary text-white rounded-lg font-black text-lg relative overflow-hidden group shadow-xl cursor-pointer"
           >
             <span className="relative z-10 flex items-center gap-3">
               Get Started{" "}
@@ -222,8 +223,8 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-            <div className="font-16 text-slate-500 font-medium">
-              <span className="text-white font-bold">20+</span> Brands Trust Us
+            <div className="font-16 text-slate-400 font-medium">
+              <span className="text-white font-bold">10+</span> Brands Trust Us
             </div>
           </div>
         </div>
