@@ -66,7 +66,7 @@ export default function JoinModal({
           >
             <button
               onClick={onClose}
-              className="c
+              className="cursor-pointer
                 absolute top-6 right-5
                 text-gray-400 hover:text-black
                 bg-blue-100 rounded-full shrink-0 p-1

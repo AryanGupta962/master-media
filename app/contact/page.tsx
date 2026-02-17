@@ -62,7 +62,7 @@ export default function Contact() {
                     alt="Master Media Logo"
                     width={180}
                     height={70}
-                    className="h-24 w-auto object-contain invert brightness-0"
+                    className="h-24 w-auto object-contain invert brightness-0 border-b border-white"
                     priority
                   />
                 </Link>

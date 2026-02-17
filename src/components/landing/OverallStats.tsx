@@ -64,7 +64,7 @@ export default function OverallStats() {
           <>
             <button
               onClick={() => setOpen(true)}
-              className="group relative inline-flex items-center justify-center rounded-xl bg-[#324dd3] px-8 py-4 text-white font-semibold shadow-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]"
+              className="group cursor-pointer relative inline-flex items-center justify-center rounded-xl bg-[#324dd3] px-8 py-4 text-white font-semibold shadow-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]"
             >
               Request a Proposal
               <FaArrowRight
