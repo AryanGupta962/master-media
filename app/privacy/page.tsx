@@ -111,7 +111,7 @@ export default function Privacy() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen bg-gray-400 px-4 lg:px-10 pt-25 pb-15">
+    <section className="relative w-full min-h-screen bg-primary/50 px-4 lg:px-10 pt-25 pb-15">
       <motion.div
         animate={{ opacity: [0.4, 0.7, 0.4] }}
         transition={{ duration: 6, repeat: Infinity }}
@@ -143,7 +143,7 @@ export default function Privacy() {
                 }
                 className={`group flex items-center gap-3 w-full text-left transition-all duration-300 ${
                   active === section.id
-                    ? "text-[#324dd3]"
+                    ? "text-shadow-gray-700"
                     : "text-white/70 hover:text-white"
                 }`}
               >
