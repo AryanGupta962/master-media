@@ -56,7 +56,7 @@ export default function CareerGrowthSection() {
           >
             <div className="rounded-xl overflow-hidden">
               <Image
-                src="/images/career.jpg"  // replace with your image
+                src="/images/career.webp"
                 alt="Career Growth"
                 width={500}
                 height={500}
@@ -85,10 +85,10 @@ export default function CareerGrowthSection() {
                   cursor-pointer
                 "
               >
-                <h3 className="text-lg md:text-xl font-semibold mb-3">
+                <h3 className="font-20 font-semibold mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-200 leading-relaxed">
+                <p className="font-16 text-gray-200 leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>

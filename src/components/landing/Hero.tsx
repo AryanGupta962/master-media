@@ -214,7 +214,7 @@ export default function Hero() {
                   className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center text-[10px] font-bold text-white shadow-lg overflow-hidden"
                 >
                   <Image
-                    src={`/content/partnerBelt/${i}.png`}
+                    src={`/content/partnerBelt/${i}.webp`}
                     alt="user"
                     className="w-full h-full object-cover"
                     width={40}
