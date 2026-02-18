@@ -20,6 +20,10 @@ const images = [
   "/content/brands/home/Photo (15).webp",
   "/content/brands/home/Photo (16).webp",
   "/content/brands/home/Photo (17).webp",
+  "/content/brands/home/Photo (18).webp",
+  "/content/brands/home/Photo (20).webp",
+  "/content/brands/home/Photo (21).webp",
+  "/content/brands/home/Photo (22).webp",
 ];
 
 const containerVariants = {
@@ -49,7 +53,7 @@ const ImageCard = ({ src }: { src: string }) => {
   return (
     <motion.div
       variants={itemVariants}
-      className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-square"
+      className="relative group cursor-pointer overflow-hidden rounded-2xl "
       whileHover={{ y: -8 }}
       transition={{ type: "spring", stiffness: 120 }}
     >
@@ -85,7 +89,7 @@ export default function Media() {
         }}
       />
       {/* Heading */}
-      <div className="mb-14 lg:mb-20 text-center max-w-4xl mx-auto">
+      <div className="mb-10 lg:mb-20 text-center max-w-4xl mx-auto">
         <h2 className="text-4xl lg:text-6xl font-extrabold text-white tracking-tight">
           Impact in Action
         </h2>
@@ -103,20 +107,20 @@ export default function Media() {
           viewport={{ once: true, amount: 0.15 }}
           className="flex flex-col gap-6"
         >
-          <div className="grid grid-cols-6 gap-4">
-            {images.slice(0, 6).map((src, i) => (
+          <div className="grid grid-cols-8 gap-4">
+            {images.slice(0, 8).map((src, i) => (
               <ImageCard key={i} src={src} />
             ))}
           </div>
 
-          <div className="grid grid-cols-4 gap-4">
-            {images.slice(6, 10).map((src, i) => (
+          <div className="grid grid-cols-5 gap-4">
+            {images.slice(8, 13).map((src, i) => (
               <ImageCard key={i} src={src} />
             ))}
           </div>
 
-          <div className="grid grid-cols-6 gap-4">
-            {images.slice(10, 16).map((src, i) => (
+          <div className="grid grid-cols-8 gap-4">
+            {images.slice(13, 21).map((src, i) => (
               <ImageCard key={i} src={src} />
             ))}
           </div>
@@ -130,22 +134,27 @@ export default function Media() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-2"
         >
-          <div className="grid grid-cols-3 gap-3">
-            {images.slice(0, 3).map((src, i) => (
+          <div className="grid grid-cols-4 gap-2">
+            {images.slice(0, 4).map((src, i) => (
               <ImageCard key={i} src={src} />
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            {images.slice(3, 5).map((src, i) => (
+          <div className="grid grid-cols-3 gap-2">
+            {images.slice(4, 7).map((src, i) => (
               <ImageCard key={i} src={src} />
             ))}
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
-            {images.slice(5, 8).map((src, i) => (
+          <div className="grid grid-cols-4 gap-2">
+            {images.slice(7, 11).map((src, i) => (
+              <ImageCard key={i} src={src} />
+            ))}
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            {images.slice(11, 14).map((src, i) => (
               <ImageCard key={i} src={src} />
             ))}
           </div>

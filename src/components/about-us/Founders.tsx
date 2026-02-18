@@ -11,9 +11,11 @@ const founders = [
     name: "Mr. Abhi Gupta",
     role: "CEO & Co-Founder",
     image: "/images/Abhi_Gupta.webp",
-    bio: `The brain behind the brand. Sahil believes marketing isn&apos;t about selling —
-    it&apos;s about storytelling that converts. When he&apos;s not building empires,
-    he&apos;s probably planning the next one.`,
+    bio: `The brain behind the brand. Vision-driven and relentlessly curious.
+          Abhi believes marketing isn’t about selling 
+          products — it’s about crafting stories that build trust and drive action. 
+          With a sharp eye for brand identity and growth strategy, he turns ideas into impact. 
+          When he’s not shaping campaigns, he’s already planning the next big move for Master Media.`,
     linkedin: "https://linkedin.com/in/username",
   },
   {
@@ -21,8 +23,9 @@ const founders = [
     role: "Co-Founder",
     image: "/images/Aman_Gupta.webp",
     bio: `Strategic thinker. Vision architect. Calm in chaos.
-    Jestin ensures Master Media doesn&apos;t just follow trends —
-    we create them. Also secretly the team&apos;s problem-solver.`,
+          Aman ensures Master Media doesn’t just follow trends — we create them. 
+          He connects long-term vision with practical execution, bringing clarity where things get complex. 
+          Quietly dependable and deeply analytical, he’s also the one the team turns to when problems need real solutions.`,
     linkedin: "https://linkedin.com/in/username",
   },
 ];

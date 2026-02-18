@@ -20,21 +20,21 @@ interface StatItem {
 const stats: StatItem[] = [
   {
     icon: <FaUsers />,
-    value: 5000,
+    value: 250,
     suffix: "+",
     title: "Brands Empowered",
-    desc: "Businesses scaled with strategy",
+    desc: "Businesses scaled with strategy Consistently",
   },
   {
     icon: <FaHeart />,
-    value: 60000,
+    value: 1000000,
     suffix: "+",
     title: "Campaign Impressions",
     desc: "Audience reach across digital platforms",
   },
   {
     icon: <FaBuilding />,
-    value: 120,
+    value: 50,
     suffix: "+",
     title: "Projects Delivered",
     desc: "Web, branding & growth campaigns",
@@ -44,7 +44,7 @@ const stats: StatItem[] = [
     value: 15,
     suffix: "+",
     title: "Industry Recognitions",
-    desc: "Trusted by brands & partners",
+    desc: "Trusted by brands & partners proven",
   },
 ];
 
@@ -127,7 +127,7 @@ function StatCard({
         </div>
 
         {/* Title */}
-        <p className="mt-3 font-semibold text-white">{title}</p>
+        <p className="mt-3 font-18 font-semibold text-white">{title}</p>
 
         {/* Desc */}
         <p className="mt-2 font-16 text-white">{desc}</p>

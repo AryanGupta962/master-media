@@ -13,20 +13,21 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { useIsMobile } from "@/src/utils/hooks/useIsMobile";
+import { useIsMobileTablet } from "@/src/utils/hooks/useIsMobileTablet";
+
 
 type ActiveWord = "masters" | "algorithm" | "break" | null;
 
 const stats = [
   {
     label: "Total Reach",
-    val: "10M+",
+    val: "1M+",
     icon: <SlGraph size={26} className="text-white" />,
   },
   {
     label: "Campaigns",
-    val: "500+",
-    icon: <GoGoal size={26} className="text-blue-600" />,
+    val: "50+",
+    icon: <GoGoal size={26} className="text-white" />,
   },
   {
     label: "ROI Growth",
@@ -66,7 +67,7 @@ export default function Hero() {
   const [activeWord, setActiveWord] = useState<ActiveWord>(null);
   const [open, setOpen] = useState(false);
 
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobileTablet();
 
   const streams = useMemo(() => Array.from({ length: 15 }), []);
 
@@ -223,7 +224,7 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-            <div className="font-16 text-slate-400 font-medium">
+            <div className="font-16 text-white font-medium">
               <span className="text-white font-bold">10+</span> Brands Trust Us
             </div>
           </div>

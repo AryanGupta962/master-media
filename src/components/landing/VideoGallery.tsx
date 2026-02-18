@@ -156,11 +156,11 @@ const VideoGallery: React.FC = () => {
                 </div>
 
                 {/* Optional play icon overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 ">
                   <div className="bg-black/50 rounded-full p-3 text-white text-xl">
                     <FaRegCirclePlay size={32} />
                   </div>
-                </div>
+                </div> */}
               </div>
             </SwiperSlide>
           ))}
