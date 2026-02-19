@@ -1,7 +1,15 @@
-import OurApproachCard from "@/src/components/contact/OurApproachCard";
-import ContactForm from "../../src/components/contact/contactForm";
+"use client";
+
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
+
+const ContactForm = dynamic(
+  () => import("../../src/components/contact/contactForm"),
+);
+const OurApproachCard = dynamic(
+  () => import("@/src/components/contact/OurApproachCard"),
+);
 
 export default function Contact() {
   return (

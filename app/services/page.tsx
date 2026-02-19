@@ -1,8 +1,14 @@
-import ReachOptions from "@/src/components/services/ReachOptions";
-import ServicesGrid from "@/src/components/services/ServicesGrid";
+import dynamic from "next/dynamic";
 import ServicesHero from "@/src/components/services/ServicesHero";
-import JoinUI from "@/src/components/landing/JoinUI";
-import MasterMediaGrowth from "@/src/components/services/MasterMediaGrowth";
+import ServicesGrid from "@/src/components/services/ServicesGrid";
+
+const ReachOptions = dynamic(
+  () => import("@/src/components/services/ReachOptions"),
+);
+const MasterMediaGrowth = dynamic(
+  () => import("@/src/components/services/MasterMediaGrowth"),
+);
+const JoinUI = dynamic(() => import("@/src/components/landing/JoinUI"));
 
 export default async function ServicesPage() {
   return (
@@ -10,7 +16,7 @@ export default async function ServicesPage() {
       <ServicesHero />
       <ServicesGrid />
       <ReachOptions />
-      <MasterMediaGrowth/>
+      <MasterMediaGrowth />
 
       <JoinUI />
     </section>

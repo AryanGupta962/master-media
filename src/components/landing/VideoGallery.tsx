@@ -81,7 +81,7 @@ const VideoGallery: React.FC = () => {
           pagination={{ clickable: true }}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
           onSlideChange={(swiper) => handlePlayState(swiper.realIndex)}
-          className="!pb-16"
+          className="pb-16!"
         >
           {videos.map((item, index) => (
             <SwiperSlide 
@@ -103,7 +103,7 @@ const VideoGallery: React.FC = () => {
                 />
 
                 {/* Gradient overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
                 {/* Title Overlay */}
                 <div className="absolute bottom-6 left-6 text-white">
@@ -119,10 +119,10 @@ const VideoGallery: React.FC = () => {
 
       {/* Fullscreen Video Modal logic from your original code */}
       {zoomIndex !== null && (
-        <div className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/95 z-100 flex items-center justify-center p-4">
           <button
             onClick={() => setZoomIndex(null)}
-            className="absolute top-6 right-6 z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white text-2xl hover:bg-white/20 transition"
+            className="absolute top-6 right-6 z-110 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white text-2xl hover:bg-white/20 transition"
           >
             ✕
           </button>
