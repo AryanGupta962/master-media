@@ -1,25 +1,32 @@
-
 import Hero from "@/src/components/landing/Hero";
-import JoinUI from "@/src/components/landing/JoinUI";
-import Mastery from "@/src/components/landing/Mastery";
-import Media from "@/src/components/landing/Media";
-import OverallStats from "@/src/components/landing/OverallStats";
-import PartnerBelt from "@/src/components/landing/PartnerBelt";
-// import ReelsScroll from "@/src/components/landing/ReelsScroll";
-import Reviews from "@/src/components/landing/Reviews";
 import Services from "@/src/components/landing/Services";
-import VideoGallery from "@/src/components/landing/VideoGallery";
+
+import dynamic from "next/dynamic";
+
+const Media = dynamic(() => import("@/src/components/landing/Media"), {
+  loading: () => <div className="h-40" />,
+});
+const PartnerBelt = dynamic(
+  () => import("@/src/components/landing/PartnerBelt"),
+);
+const VideoGallery = dynamic(
+  () => import("@/src/components/landing/VideoGallery"),
+);
+const Reviews = dynamic(() => import("@/src/components/landing/Reviews"));
+const Mastery = dynamic(() => import("@/src/components/landing/Mastery"));
+const OverallStats = dynamic(
+  () => import("@/src/components/landing/OverallStats"),
+);
+const JoinUI = dynamic(() => import("@/src/components/landing/JoinUI"));
 
 export default function Home() {
   return (
     <div className="">
       <Hero />
-      {/* <WhatWeDo /> */}
-      <Services />   
-      <Media/>
-      <PartnerBelt/>
+      <Services />
+      <Media />
+      <PartnerBelt />
       <VideoGallery />
-      {/* <ReelsScroll/> */}
       <Reviews />
       <Mastery />
       <OverallStats />
@@ -28,4 +35,3 @@ export default function Home() {
     </div>
   );
 }
-

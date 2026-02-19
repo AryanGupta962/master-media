@@ -1,6 +1,6 @@
 STRICT PROPRIETARY LICENSE
 
-Copyright (c) 2026 Aryan Gupta
+Copyright (c) 2026 Master Media | Aryan Gupta | Krishna K. Gupta
 
 This repository and all of its contents are strictly proprietary and confidential.
 
